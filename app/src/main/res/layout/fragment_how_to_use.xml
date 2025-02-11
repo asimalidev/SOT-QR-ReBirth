@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HowToUseFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/lexend_bold"
+        android:text="@string/supported_codes"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/qrcodes"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ic_qrcoding"
+        app:layout_constraintEnd_toStartOf="@id/ean13"
+        app:layout_constraintBottom_toBottomOf="@+id/ean13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+
+    <ImageView
+        android:id="@+id/ean13"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ic_eann13"
+        app:layout_constraintEnd_toStartOf="@+id/ean8"
+        app:layout_constraintStart_toEndOf="@+id/qrcodes"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <ImageView
+        android:id="@+id/ean8"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ic_eann13"
+        app:layout_constraintEnd_toStartOf="@+id/code25"
+        app:layout_constraintStart_toEndOf="@+id/ean13"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <ImageView
+        android:id="@+id/code25"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/code25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ean8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+
+    <ImageView
+        android:id="@+id/upca"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:src="@drawable/ic_upca"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@+id/qrcodes"
+        app:layout_constraintTop_toBottomOf="@+id/qrcodes" />
+
+    <ImageView
+        android:id="@+id/upce"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:src="@drawable/ic_upce"
+        app:layout_constraintStart_toStartOf="@+id/ean13"
+        app:layout_constraintTop_toTopOf="@+id/upca" />
+
+
+    <ImageView
+        android:id="@+id/codebar"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:src="@drawable/ic_codabar"
+        app:layout_constraintStart_toStartOf="@+id/ean8"
+        app:layout_constraintTop_toTopOf="@+id/upca" />
+
+    <ImageView
+        android:id="@+id/code39"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:src="@drawable/ic_code39"
+        app:layout_constraintStart_toStartOf="@+id/code25"
+        app:layout_constraintTop_toTopOf="@+id/upca" />
+
+
+    <ImageView
+        android:id="@+id/code93"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/code93"
+        app:layout_constraintStart_toStartOf="@+id/upca"
+        app:layout_constraintTop_toBottomOf="@+id/upca" />
+
+
+    <ImageView
+        android:id="@+id/code128"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/code128"
+        app:layout_constraintStart_toStartOf="@+id/upce"
+        app:layout_constraintTop_toBottomOf="@+id/upca" />
+
+
+    <ImageView
+        android:id="@+id/R55"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/r55"
+        app:layout_constraintStart_toStartOf="@+id/codebar"
+        app:layout_constraintTop_toBottomOf="@+id/upca" />
+
+
+    <ImageView
+        android:id="@+id/aztech"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/aztech"
+        app:layout_constraintStart_toStartOf="@+id/code39"
+        app:layout_constraintTop_toBottomOf="@+id/upca" />
+
+
+    <ImageView
+    android:id="@+id/pdf"
+    android:layout_width="78dp"
+    android:layout_height="86dp"
+    android:src="@drawable/pdf"
+        android:layout_marginTop="@dimen/_10sdp"
+    app:layout_constraintStart_toStartOf="@+id/code93"
+    app:layout_constraintTop_toBottomOf="@+id/code93" />
+
+    <ImageView
+        android:id="@+id/datamatrix"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:src="@drawable/datamatrix"
+        app:layout_constraintStart_toStartOf="@+id/code128"
+        app:layout_constraintTop_toTopOf="@+id/pdf" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:fontFamily="@font/lexend_bold"
+        android:text="@string/unsupported_codes"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datamatrix" />
+
+    <ImageView
+        android:id="@+id/model1"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/model1"
+        app:layout_constraintEnd_toStartOf="@id/microqr"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <ImageView
+        android:id="@+id/microqr"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/microqr"
+        app:layout_constraintEnd_toStartOf="@id/ean5"
+        app:layout_constraintStart_toEndOf="@+id/model1"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <ImageView
+        android:id="@+id/ean5"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ean5"
+        app:layout_constraintEnd_toStartOf="@id/codes25"
+        app:layout_constraintStart_toEndOf="@+id/microqr"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
+    <ImageView
+        android:id="@+id/codes25"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/code25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ean5"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
+    <ImageView
+        android:id="@+id/micropdf"
+        android:layout_width="78dp"
+        android:layout_height="86dp"
+        android:src="@drawable/micropdf"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@+id/model1"
+        app:layout_constraintStart_toStartOf="@+id/model1"
+        app:layout_constraintTop_toBottomOf="@+id/model1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+

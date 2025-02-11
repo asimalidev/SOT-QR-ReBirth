@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/appcolor"
+    tools:context=".fragments.EmailFragment">
+
+
+    <EditText
+        android:id="@+id/emailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_bg"
+        android:drawablePadding="12dp"
+        android:elevation="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/enter_email_address"
+        android:fontFamily="@font/lexend"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp" />
+
+
+    <EditText
+        android:id="@+id/enterSubject"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_bg"
+        android:drawablePadding="12dp"
+        android:layout_marginStart="16dp"
+        android:elevation="@dimen/_10sdp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/lexend"
+        android:hint="@string/enter_subject"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/emailAddress" />
+
+
+    <EditText
+        android:id="@+id/enterEmailText"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/rounded_bg"
+        android:drawablePadding="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/lexend"
+        android:hint="@string/enter_email_text"
+        android:maxLength="500"
+        android:elevation="@dimen/_10sdp"
+        android:gravity="start"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/enterSubject" />
+
+    <TextView
+        android:id="@+id/characterCountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lexend"
+        android:text="0/500"
+        app:layout_constraintEnd_toEndOf="@+id/enterEmailText"
+        app:layout_constraintTop_toBottomOf="@+id/enterEmailText" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clBarCode"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_margin="@dimen/_40sdp"
+        android:background="@drawable/rounded_bg"
+        android:backgroundTint="@color/appBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterEmailText">
+
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:src="@drawable/ic_createcode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend"
+            android:text="@string/create_qr_code"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/qrCodeTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:fontFamily="@font/lexend"
+        android:maxLines="1"
+        android:text="QR Code"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/drawableImageView"
+        app:layout_constraintTop_toTopOf="@+id/drawableImageView" />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:fontFamily="@font/lexend"
+        app:layout_constraintTop_toBottomOf="@id/qrCodeTextView"
+        android:textSize="14sp"
+        android:layout_marginStart="@dimen/_15sdp"
+        app:layout_constraintStart_toEndOf="@+id/drawableImageView"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:fontFamily="@font/lexend"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintStart_toEndOf="@id/dateTextView"
+        app:layout_constraintTop_toTopOf="@id/dateTextView"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/drawableImageView"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_website" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appcolor"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/ivcross"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/iv_notselected"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivsquare"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_star"
+        app:layout_constraintEnd_toStartOf="@+id/ivsquare2"
+        app:layout_constraintStart_toEndOf="@+id/ivcross"
+        app:layout_constraintTop_toTopOf="@+id/ivcross" />
+
+    <ImageView
+        android:id="@+id/ivsquare2"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_square2"
+        app:layout_constraintEnd_toStartOf="@+id/ivsquare3"
+        app:layout_constraintStart_toEndOf="@+id/ivsquare"
+        app:layout_constraintTop_toTopOf="@+id/ivcross" />
+
+    <ImageView
+        android:id="@+id/ivsquare3"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_sqaure3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivsquare2"
+        app:layout_constraintTop_toTopOf="@+id/ivcross" />
+
+    <ImageView
+        android:id="@+id/ivsquare4"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_square4"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@+id/ivcross"
+        app:layout_constraintStart_toStartOf="@+id/ivcross"
+        app:layout_constraintTop_toBottomOf="@+id/ivcross" />
+
+    <ImageView
+        android:id="@+id/circle1"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_circle1"
+        app:layout_constraintEnd_toEndOf="@+id/ivsquare"
+        app:layout_constraintStart_toStartOf="@+id/ivsquare"
+        app:layout_constraintTop_toBottomOf="@+id/ivcross" />
+
+    <ImageView
+        android:id="@+id/circle2"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_circle2"
+        app:layout_constraintEnd_toEndOf="@+id/ivsquare2"
+        app:layout_constraintStart_toStartOf="@+id/ivsquare2"
+        app:layout_constraintTop_toBottomOf="@+id/ivcross" />
+
+    <ImageView
+        android:id="@+id/circle3"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_circle3"
+        app:layout_constraintEnd_toEndOf="@+id/ivsquare3"
+        app:layout_constraintStart_toStartOf="@+id/ivsquare3"
+        app:layout_constraintTop_toBottomOf="@+id/ivcross" />
+
+    <ImageView
+        android:id="@+id/roundedsquare1"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/roundedsquare_diamond"
+        app:layout_constraintEnd_toEndOf="@+id/ivsquare4"
+        app:layout_constraintStart_toStartOf="@+id/ivsquare4"
+        app:layout_constraintTop_toBottomOf="@+id/ivsquare4" />
+
+
+    <ImageView
+        android:id="@+id/roundedsquare2"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/roundedsquare_circle"
+        app:layout_constraintEnd_toEndOf="@+id/circle1"
+        app:layout_constraintStart_toStartOf="@+id/circle1"
+        app:layout_constraintTop_toBottomOf="@+id/ivsquare4" />
+
+    <ImageView
+        android:id="@+id/roundedsquare3"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/roundedsquare_roundedsquare"
+        app:layout_constraintEnd_toEndOf="@+id/circle2"
+        app:layout_constraintStart_toStartOf="@+id/circle2"
+        app:layout_constraintTop_toBottomOf="@+id/ivsquare4" />
+
+    <ImageView
+        android:id="@+id/roundedsquare4"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/roundedsquare_square"
+        app:layout_constraintEnd_toEndOf="@+id/circle3"
+        app:layout_constraintStart_toStartOf="@+id/circle3"
+        app:layout_constraintTop_toBottomOf="@+id/ivsquare4" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDoneEyes"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/rounded_bg"
+        android:backgroundTint="@color/appBlue"
+        android:fontFamily="@font/lexend"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roundedsquare3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtTop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_shock_emoji"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/lexend"
+            android:gravity="center_vertical"
+            android:text="@string/transforming_your_desires_into_reality"
+            android:textColor="#8A8A8A"
+            app:layout_constraintEnd_toStartOf="@+id/txtNext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/next"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/appBlue"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtTop"
+            app:layout_constraintTop_toTopOf="@+id/txtTop" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/lexend_bold"
+            android:gravity="start"
+            android:text="@string/choose_the_features_that_suit_your_requirements"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTop" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/mainParent"
+        app:layout_constraintStart_toStartOf="@+id/mainParent"
+        app:layout_constraintTop_toBottomOf="@+id/mainParent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtScanQRCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/btn_bg_feature_off"
+                android:drawableTop="@drawable/ic_new_scanqrcode"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/scan_qr_code"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/txtScanBarCode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/progress"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:elevation="@dimen/_10sdp"
+                android:translationX="60dp"
+                android:translationY="-15dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtScanQRCode"
+                app:layout_constraintEnd_toEndOf="@+id/txtScanQRCode"
+                app:layout_constraintStart_toStartOf="@+id/txtScanQRCode"
+                app:layout_constraintTop_toTopOf="@+id/txtScanQRCode"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/lottie_lfo_finger"
+                app:lottie_repeatCount="999999"
+                app:lottie_repeatMode="reverse" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtScanBarCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/btn_bg_feature_off"
+                android:drawableTop="@drawable/ic_new_barcode"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/label_scan_bar_code"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtScanQRCode"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtScanQRCode"
+                app:layout_constraintTop_toTopOf="@+id/txtScanQRCode" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtCreateQRCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/btn_bg_feature_off"
+                android:drawableTop="@drawable/ic_new_createqrcode"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/create_qr_codes"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/txtCreateBarCode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtScanQRCode" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtCreateBarCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/btn_bg_feature_off"
+                android:drawableTop="@drawable/ic_new_createbarcode"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/create_barcode"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtCreateQRCode"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtCreateQRCode"
+                app:layout_constraintTop_toTopOf="@+id/txtCreateQRCode" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtCreatePDF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/btn_bg_feature_off"
+                android:drawableTop="@drawable/ic_new_createpdf"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/label_create_pdf"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/txtTranslateImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCreateQRCode" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTranslateImage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/btn_bg_feature_off"
+                android:drawableTop="@drawable/ic_translate_image"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/label_translate_image"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtCreatePDF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtCreatePDF"
+                app:layout_constraintTop_toTopOf="@+id/txtCreatePDF" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtSearchImage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/btn_bg_feature_off"
+                android:drawableTop="@drawable/ic_new_searchimage"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/label_search_image"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtSearchProduct"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCreatePDF" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtSearchProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/btn_bg_feature_off"
+                android:drawableTop="@drawable/ic_new_search_product"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/label_search_Product"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtSearchImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtSearchImage"
+                app:layout_constraintTop_toTopOf="@+id/txtSearchImage" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

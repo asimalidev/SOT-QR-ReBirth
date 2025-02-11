@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appcolor">
+
+
+
+    <ImageView
+        android:id="@+id/ivTwitter"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_twitter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivFacebook"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivNoSelected"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/iv_notselected"
+        app:layout_constraintEnd_toStartOf="@+id/ivWhatsapp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivWhatsapp" />
+
+    <ImageView
+        android:id="@+id/ivWhatsapp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/whatsapp_logo"
+        app:layout_constraintEnd_toStartOf="@+id/ivFacebook"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivNoSelected"
+        app:layout_constraintTop_toTopOf="@+id/ivFacebook" />
+
+    <ImageView
+        android:id="@+id/ivFacebook"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_facebook"
+        app:layout_constraintEnd_toStartOf="@+id/ivTwitter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivWhatsapp"
+        app:layout_constraintTop_toTopOf="@+id/ivTwitter" />
+
+
+    <ImageView
+        android:id="@+id/ivPintrest"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_pintrest"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="@id/ivNoSelected"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivWhatsapp"
+        app:layout_constraintTop_toBottomOf="@id/ivTwitter"/>
+
+
+
+
+
+
+    <ImageView
+        android:id="@+id/ivInstagram"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_instagram"
+        app:layout_constraintStart_toStartOf="@+id/ivWhatsapp"
+        app:layout_constraintTop_toTopOf="@+id/ivPintrest" />
+
+
+    <ImageView
+        android:id="@+id/ivTiktok"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_tiktok"
+        app:layout_constraintStart_toStartOf="@+id/ivFacebook"
+        app:layout_constraintTop_toTopOf="@+id/ivPintrest" />
+
+
+    <ImageView
+        android:id="@+id/ivGmail"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_gmail"
+        app:layout_constraintStart_toStartOf="@+id/ivTwitter"
+        app:layout_constraintTop_toTopOf="@+id/ivPintrest" />
+
+
+    <ImageView
+        android:id="@+id/ivLinkedIn"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ic_linkedin"
+        app:layout_constraintStart_toStartOf="@+id/ivPintrest"
+        app:layout_constraintTop_toBottomOf="@+id/ivPintrest" />
+
+    <ImageView
+        android:id="@+id/ivGoogle"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_google"
+        app:layout_constraintEnd_toEndOf="@+id/ivInstagram"
+        app:layout_constraintStart_toStartOf="@+id/ivInstagram"
+        app:layout_constraintTop_toBottomOf="@+id/ivPintrest" />
+
+    <ImageView
+        android:id="@+id/ivYoutube"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_youtube"
+        app:layout_constraintEnd_toEndOf="@+id/ivTiktok"
+        app:layout_constraintTop_toTopOf="@+id/ivGoogle" />
+
+
+    <ImageView
+        android:id="@+id/ivSnapchat"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/circle_button"
+        android:padding="@dimen/_13sdp"
+        android:src="@drawable/ic_snapchat"
+        app:layout_constraintEnd_toEndOf="@+id/ivGmail"
+        app:layout_constraintStart_toStartOf="@+id/ivGmail"
+        app:layout_constraintTop_toTopOf="@+id/ivGoogle" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDoneLogos"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/rounded_bg"
+        android:backgroundTint="@color/appBlue"
+        android:fontFamily="@font/lexend"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivLinkedIn" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

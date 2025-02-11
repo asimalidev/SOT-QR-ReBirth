@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_margin="@dimen/_7sdp"
+    android:layout_marginBottom="@dimen/_20sdp"
+    android:background="@drawable/rounded_bg"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:layout_editor_absoluteX="7dp">
+
+    <LinearLayout
+        android:id="@+id/llmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/notificationTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:drawableStart="@drawable/ic_notify"
+        android:fontFamily="@font/lexend_bold"
+        android:gravity="start"
+        android:drawablePadding="20dp"
+        android:text="@string/sharper_scans_better_nresults"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/notificationMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:fontFamily="@font/lexend"
+        android:paddingEnd="@dimen/_20sdp"
+        android:text="@string/apply_filters_for_accuracy_and_save_as_npdf_or_image"
+        android:textColor="#666666"
+        android:textSize="18sp" />
+
+    <!-- Use a simple ImageView without complex backgrounds -->
+    <ImageView
+        android:id="@+id/notificationImage"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:scaleType="fitXY"
+
+        android:background="@drawable/rounded_bg"
+        android:src="@drawable/ic_notify5" />
+
+    <!-- Button TextView with PendingIntent functionality -->
+    <TextView
+        android:id="@+id/btnCheck"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/rounded_bg"
+        android:backgroundTint="@color/appBlue"
+        android:fontFamily="@font/lexend_bold"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/check_it_out"
+        android:textAlignment="center"
+        android:textColor="@color/white" />
+
+    </LinearLayout>
+</LinearLayout>

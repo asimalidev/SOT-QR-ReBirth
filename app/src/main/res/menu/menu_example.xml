@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_share_pdf"
+        android:title="@string/share_as_pdf"
+        android:icon="@drawable/ic_pdf"
+         />
+
+    <item
+        android:id="@+id/action_share_image"
+        android:title="@string/share_as_image"
+        android:icon="@drawable/ic_image"
+     />
+
+    <item
+        android:id="@+id/action_export_pdf"
+        android:title="@string/export_to_pdf"
+        android:icon="@drawable/ic_pdf"
+        />
+
+    <item
+        android:id="@+id/action_export_image"
+        android:title="@string/export_to_image"
+        android:icon="@drawable/ic_image"
+        />
+</menu>

@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_flow_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:label="Home"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.HomeFragment"
+        tools:layout="@layout/test_layout">
+
+        <action
+            android:id="@+id/nav_home_to_nav_showcode"
+            app:destination="@id/nav_showcode">
+            <argument
+                android:name="qrCode"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_ScanQRCode"
+            app:destination="@id/nav_scancode" />
+
+        <action
+            android:id="@+id/action_nav_home_nav_history"
+            app:destination="@+id/nav_history"/>
+
+        <action
+            android:id="@+id/action_nav_home_nav_batch"
+            app:destination="@+id/nav_batch"/>
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_Setting"
+            app:destination="@id/settingFragment" />
+
+         <action
+            android:id="@+id/action_nav_home_to_nav_create"
+            app:destination="@id/nav_create" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_CreateBarCode"
+            app:destination="@id/createBarCodeFragment" />
+
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_Help"
+            app:destination="@id/nav_Help" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_scan_document"
+            app:destination="@+id/nav_scandocument"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_scandocument"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ScanDocumentFragment"
+        tools:layout="@layout/fragment_scan_document">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_scancode"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ScanCode"
+        tools:layout="@layout/fragment_scan_code">
+
+        <action
+            android:id="@+id/action_nav_scancode_to_nav_home"
+            app:destination="@id/nav_home" />
+
+        <action
+            android:id="@+id/action_nav_scancode_to_nav_showcode"
+            app:destination="@id/nav_showcode">
+            <argument
+                android:name="qrCode"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_showcode"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowScanCode"
+        tools:layout="@layout/fragment_show_scan_code">
+        <argument
+            android:name="qrCode"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_nav_showcode_to_nav_history"
+            app:destination="@id/nav_history" />
+
+
+        <action
+            android:id="@+id/action_nav_showcode_to_nav_scancode"
+            app:destination="@id/nav_home" />
+
+        <action
+            android:id="@+id/action_showScanCode_to_viewQRCode"
+            app:destination="@id/viewQRCodeFragment">
+            <argument
+                android:name="qrCode"
+                app:argType="string" />
+
+
+        </action>
+
+        <action
+            android:id="@+id/action_showScanCode_to_viewQRCode1"
+            app:destination="@id/viewQRCodeFragment1">
+            <argument
+                android:name="qrCode"
+                app:argType="string" />
+
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewQRCodeFragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ViewQRCodeFragment">
+        <argument
+            android:name="qrCode"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_nav_viewqr_to_nav_showcode"
+            app:destination="@id/nav_scancode" />
+
+
+
+        <action
+            android:id="@+id/action_nav_viewqr_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/viewQRCodeFragment1"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ViewQRCodeFragment1">
+        <argument
+            android:name="qrCode"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_nav_viewqr_to_nav_showcode"
+            app:destination="@id/nav_history" />
+
+        <action
+            android:id="@+id/action_nav_viewqr_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_create"
+        android:label="Create"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CreateQRFragment"
+        tools:layout="@layout/fragment_create_q_r">
+        <action
+            android:id="@+id/action_nav_create_to_nav_home"
+            app:destination="@id/nav_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_home"
+            app:popUpToInclusive="false"/>
+
+        <action
+            android:id="@+id/action_nav_create_to_nav_calender"
+            app:destination="@id/calenderFragment" />
+
+        <action
+            android:id="@+id/action_nav_create_to_nav_wifi"
+            app:destination="@id/nav_wifi" />
+
+
+        <action
+            android:id="@+id/action_nav_create_to_nav_contact"
+            app:destination="@id/nav_Contacts" />
+
+
+        <action
+            android:id="@+id/action_navCreateQR_to_navClipboard"
+            app:destination="@id/nav_clipboard">
+            <argument
+                android:name="clipboardText"
+                app:argType="string" />
+
+        </action>
+
+
+        <action
+            android:id="@+id/action_navCreateQR_to_navApps"
+            app:destination="@id/nav_apps" />
+
+        <action
+            android:id="@+id/action_navCreateQR_to_navLocation"
+            app:destination="@id/nav_location" />
+        <action
+            android:id="@+id/action_navCreateQR_to_navEmail"
+            app:destination="@id/nav_email" />
+
+        <action
+            android:id="@+id/action_nav_create_to_nav_createlinks"
+            app:destination="@id/nav_Createlinks">
+
+            <argument
+                android:name="platform"
+                app:argType="string" />
+
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_Createlinks"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CreateLinksQRCodeFragment"
+        tools:layout="@layout/fragment_create_links_q_r_code">
+
+        <action
+            android:id="@+id/action_createLinksQRCode_to_createqrcode"
+            app:destination="@id/nav_create" />
+
+
+        <argument
+            android:name="platform"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_createLinksQRCode_to_QRcreationURL"
+            app:destination="@id/nav_viewURLCreation">
+            <argument
+                android:name="url"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_viewURLCreation"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.QRCodeCreationURLFragment"
+        tools:layout="@layout/fragment_q_r_code_creation_u_r_l">
+
+        <action
+            android:id="@+id/action_urlcreation_to_finalImage"
+            app:destination="@id/nav_finalImage" >
+
+            <argument
+                android:name="bitmapByteArray"
+                app:argType="string" />
+
+            <argument
+                android:name="qrCodeText"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/showurl_to_createqrcode"
+            app:destination="@id/nav_create" />
+
+        <argument
+            android:name="url"
+            app:argType="string" />
+
+
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/nav_email"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.EmailFragment"
+        tools:layout="@layout/fragment_email">
+
+        <action
+            android:id="@+id/emailfraggment_to_create_QR_Fragment"
+            app:destination="@id/nav_create" />
+        <action
+            android:id="@+id/action_emailFragment_to_qrCodeFragment"
+            app:destination="@id/nav_createemailqr">
+            <argument
+                android:name="emailAddress"
+                app:argType="string" />
+            <argument
+                android:name="subject"
+                app:argType="string" />
+            <argument
+                android:name="message"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_webfragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.WebViewFragment"
+        tools:layout="@layout/fragment_web_view">
+
+        <action
+            android:id="@+id/action_nav_web_nav_settings"
+            app:destination="@+id/settingFragment"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_createemailqr"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CreateEmailQRFragment"
+        tools:layout="@layout/fragment_create_email_q_r">
+        <action
+            android:id="@+id/action_nav_create_to_nav_back"
+            app:destination="@id/nav_create" />
+
+        <action
+            android:id="@+id/action_email_to_finalImage"
+            app:destination="@id/nav_finalImage" >
+
+            <argument
+                android:name="bitmapByteArray"
+                app:argType="string" />
+
+            <argument
+                android:name="emaildata"
+                app:argType="string" />
+
+        </action>
+
+
+        <argument
+            android:name="emailAddress"
+            app:argType="string" />
+        <argument
+            android:name="subject"
+            app:argType="string" />
+        <argument
+            android:name="message"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_apps"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.AppFragment"
+        tools:layout="@layout/fragment_app">
+
+        <action
+            android:id="@+id/action_navAppFragment_to_createqr"
+            app:destination="@id/nav_create" />
+
+        <action
+            android:id="@+id/action_navAppFragment_to_showQRForAppFragment"
+            app:destination="@id/nav_ShowQRForAppFragment">
+            <argument
+                android:name="appLink"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_ShowQRForAppFragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowQRForAppFragment"
+        tools:layout="@layout/fragment_show_q_r_for_app">
+
+        <action
+            android:id="@+id/action_showapp_to_finalImage"
+            app:destination="@id/nav_finalImage" >
+
+            <argument
+                android:name="bitmapByteArray"
+                app:argType="string" />
+
+            <argument
+                android:name="appLink"
+                app:argType="string" />
+        </action>
+
+        <argument
+            android:name="appLink"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_showQRForAppFragment_to_navAppFragment"
+            app:destination="@id/nav_create" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_clipboard"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ClipboardFragment"
+        tools:layout="@layout/fragment_clipboard">
+
+        <action
+            android:id="@+id/action_clipboardFragment_to_createqr"
+            app:destination="@id/nav_create" />
+        <argument
+            android:name="clipboardText"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_clipboardFragment_to_showclipboardQR"
+            app:destination="@id/nav_showClipboardCode">
+            <argument
+                android:name="clipboardText"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_showClipboardCode"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowClipboardQR"
+        tools:layout="@layout/fragment_show_clipboard_q_r">
+
+        <action
+            android:id="@+id/action_clipboardFragment_to_CreateQRFragment"
+            app:destination="@id/nav_create" />
+
+        <action
+            android:id="@+id/action_showclipboard_to_finalImage"
+            app:destination="@id/nav_finalImage" >
+
+            <argument
+                android:name="bitmapByteArray"
+                app:argType="string" />
+
+            <argument
+                android:name="fileName"
+                app:argType="string" />
+        </action>
+
+
+        <argument
+            android:name="clipboardText"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_Contacts"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ContactsFragment"
+        tools:layout="@layout/fragment_contacts">
+
+        <action
+            android:id="@+id/action_contacts_to_createqr"
+            app:destination="@id/nav_create" />
+        <action
+            android:id="@+id/action_contacts_to_show_contact_qr"
+            app:destination="@id/nav_show_contact_qr">
+            <argument
+                android:name="contactInfo"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_show_contact_qr"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowContactQRFragment"
+        tools:layout="@layout/fragment_show_contact_q_r">
+
+        <action
+            android:id="@+id/action_showcontact_to_finalImage"
+            app:destination="@id/nav_finalImage" >
+
+            <argument
+                android:name="bitmapByteArray"
+                app:argType="string" />
+
+            <argument
+                android:name="qrCodeText"
+                app:argType="string" />
+
+
+        </action>
+
+        <action
+            android:id="@+id/action_showcontact_to_createqr"
+            app:destination="@id/nav_create" />
+
+        <argument
+            android:name="contactInfo"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_wifi"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.WifiFragment"
+        tools:layout="@layout/fragment_wifi">
+
+        <action
+            android:id="@+id/action_wifiFragment_to_createqr"
+            app:destination="@id/nav_create" />
+        <action
+            android:id="@+id/action_wifiFragment_to_showWifiQrFragment"
+            app:destination="@id/nav_show_wifi_qr">
+            <argument
+                android:name="networkName"
+                app:argType="string" />
+            <argument
+                android:name="password"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_show_wifi_qr"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowWifiQrFragment"
+        tools:layout="@layout/fragment_show_wifi_qr">
+
+        <action
+            android:id="@+id/action_showcontact_to_finalImage"
+            app:destination="@id/nav_finalImage" >
+
+            <argument
+                android:name="bitmapByteArray"
+                app:argType="string" />
+
+            <argument
+                android:name="wifidata"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_showwifiFragment_to_createqr"
+            app:destination="@id/nav_create" />
+
+
+        <argument
+            android:name="networkName"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_location"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.LocationFragment"
+        tools:layout="@layout/fragment_location">
+
+
+        <action
+            android:id="@+id/action_locationFragment_to_createqr"
+            app:destination="@id/nav_create" />
+
+        <action
+            android:id="@+id/action_locationFragment_to_showLocationQRFragment"
+            app:destination="@id/nav_show_location_qr">
+            <argument
+                android:name="location"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_show_location_qr"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowLocationQRFragment"
+        tools:layout="@layout/fragment_show_location_q_r">
+
+        <action
+            android:id="@+id/action_location_to_finalImage"
+            app:destination="@id/nav_finalImage" >
+
+            <argument
+                android:name="bitmapByteArray"
+                app:argType="string" />
+
+            <argument
+                android:name="location"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_showlocationFragment_to_createqr"
+            app:destination="@id/nav_create" />
+        <argument
+            android:name="location"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/calenderFragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CalenderFragment"
+        tools:layout="@layout/fragment_calender">
+
+        <action
+            android:id="@+id/action_calenderFragment_to_createqr"
+            app:destination="@id/nav_create"/>
+
+        <action
+            android:id="@+id/action_calenderFragment_to_showCalenderFragment"
+            app:destination="@id/showCalenderFragment">
+            <argument
+                android:name="eventTitle"
+                app:argType="string" />
+            <argument
+                android:name="allDayEvent"
+                app:argType="string" />
+            <argument
+                android:name="startDate"
+                app:argType="string" />
+            <argument
+                android:name="startTime"
+                app:argType="string" />
+            <argument
+                android:name="endDate"
+                app:argType="string" />
+            <argument
+                android:name="endTime"
+                app:argType="string" />
+            <argument
+                android:name="eventLocation"
+                app:argType="string" />
+            <argument
+                android:name="description"
+                app:argType="string" />
+
+        </action>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/showCalenderFragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowCalenderFragment"
+        tools:layout="@layout/fragment_show_calender">
+
+        <action
+            android:id="@+id/action_showcalender_to_finalImage"
+            app:destination="@id/nav_finalImage" >
+
+            <argument
+                android:name="bitmapByteArray"
+                app:argType="string" />
+
+            <argument
+                android:name="qrdata"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_showcalenderFragment_to_createqr"
+            app:destination="@id/nav_create"/>
+
+
+        <argument
+            android:name="eventTitle"
+            app:argType="string" />
+        <argument
+            android:name="allDayEvent"
+            app:argType="string" />
+        <argument
+            android:name="startDate"
+            app:argType="string" />
+        <argument
+            android:name="startTime"
+            app:argType="string" />
+        <argument
+            android:name="endDate"
+            app:argType="string" />
+        <argument
+            android:name="endTime"
+            app:argType="string" />
+        <argument
+            android:name="eventLocation"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/createBarCodeFragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CreateBarCodeFragment"
+        android:label="Create Barcode"
+        tools:layout="@layout/fragment_create_bar_code">
+
+        <action
+            android:id="@+id/action_createBarCodeFragment_to_home"
+            app:destination="@id/nav_home"/>
+        <action
+            android:id="@+id/action_createBarCodeFragment_to_showBarcodeFragment"
+            app:destination="@id/showBarcodeFragment">
+            <argument
+                android:name="inputText"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/showBarcodeFragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowBarcodeFragment"
+        android:label="Show Barcode"
+        tools:layout="@layout/fragment_show_barcode">
+
+        <action
+            android:id="@+id/action_showBarCodeFragment_to_createbarcode"
+            app:destination="@id/createBarCodeFragment"/>
+        <argument
+            android:name="inputText"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_languageFragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.LanguageFragment"
+        tools:layout="@layout/fragment_language">
+
+        <action
+            android:id="@+id/action_navLanguage_to_navSettings"
+            app:destination="@id/settingFragment"
+            app:launchSingleTop="true"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.SettingFragment"
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_navSetting_to_navHome"
+            app:destination="@id/nav_home" />
+
+        <action
+            android:id="@+id/action_navSetting_to_webview"
+            app:destination="@id/nav_webfragment" />
+
+        <action
+            android:id="@+id/action_navSetting_to_navLanguage"
+            app:destination="@id/nav_languageFragment" />
+
+        <action
+            android:id="@+id/action_nav_settings_to_nav_Help"
+            app:destination="@id/nav_Help" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_Help"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.HelpFragment"
+        tools:layout="@layout/fragment_help">
+        <action
+            android:id="@+id/action_navHelp_to_navUse"
+            app:destination="@id/nav_Use" />
+        <action
+            android:id="@+id/action_navhelp_to_nav_scanning"
+            app:destination="@id/nav_scanning" />
+
+        <action
+            android:id="@+id/action_navhelp_to_nav_home"
+            app:destination="@id/settingFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/settingFragment"
+            app:popUpToInclusive="false"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_Use"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.HowToUseFragment"
+        tools:layout="@layout/fragment_how_to_use">
+        <action
+            android:id="@+id/action_navuse_to_navHelp"
+            app:destination="@id/nav_Help" />
+
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_scanning"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ScanningTips"
+        tools:layout="@layout/fragment_scanning_tips">
+        <action
+            android:id="@+id/action_scaningtips_to_navHelp"
+            app:destination="@id/nav_Help" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history" >
+
+        <action
+            android:id="@+id/action_history_to_scanqr"
+            app:destination="@id/nav_scancode" />
+
+        <action
+            android:id="@+id/action_history_to_navshowqr"
+            app:destination="@id/nav_showcode" >
+            <argument
+                android:name="qrCode"
+                app:argType="string" />
+
+            <argument
+                android:name="isFromHistory"
+                app:argType="boolean" />
+        </action>
+
+        <action
+            android:id="@+id/action_history_to_naveditedQr"
+            app:destination="@id/viewQRCodeFragment1" >
+            <argument
+                android:name="qrCode"
+                app:argType="string" />
+
+<!--            <argument-->
+<!--                android:name="isFromHistory"-->
+<!--                app:argType="boolean" />-->
+        </action>
+
+        <action
+            android:id="@+id/action_history_to_home"
+            app:destination="@id/nav_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_home"
+            app:popUpToInclusive="false"/>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_batch"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.BatchFragment"
+        android:label="Batch"
+        tools:layout="@layout/fragment_batch">
+        <action
+            android:id="@+id/action_batchFragment_to_nextFragment"
+            app:destination="@id/nav_showBatch">
+            <argument
+                android:name="scannedData"
+                app:argType="com.qrcodescanner.barcodereader.qrgenerator.models.ScannedItem[]" />
+        </action>
+
+
+        <action
+            android:id="@+id/action_batchFragment_to_homefragment"
+            app:destination="@id/nav_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_home"
+            app:popUpToInclusive="false"
+            >
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_showBatch"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowBatchFragment"
+        android:label="Next Fragment"
+        tools:layout="@layout/fragment_show_batch">
+
+        <argument
+            android:name="scannedData"
+            app:argType="com.qrcodescanner.barcodereader.qrgenerator.models.ScannedItem[]" />
+
+        <action
+            android:id="@+id/action_showbatchFragment_to_batchFragment"
+            app:destination="@id/nav_batch">
+        </action>
+
+        <action
+            android:id="@+id/action_showBatchFragment_to_createQRorBarcodeFragment"
+            app:destination="@id/nav_createqrorbarcode" >
+        <argument
+            android:name="qrCodeText"
+            app:argType="string" />
+        <argument
+            android:name="isQrCode"
+            app:argType="boolean" />
+
+            <argument
+            android:name="isBarCode"
+            app:argType="boolean" />
+
+
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_createqrorbarcode"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CreateQRorBarCodeFragment"
+        android:label="Create QR or Barcode">
+
+        <action
+            android:id="@+id/nav_createqrorbarcode_to_nav_webview"
+            app:destination="@id/nav_webfragment" >
+            <argument
+                android:name="url"
+                app:argType="string" />
+
+        </action>
+        <argument
+            android:name="qrCodeText"
+            app:argType="string" />
+
+        <argument
+            android:name="isQrCode"
+            app:argType="boolean" />
+
+        <argument
+            android:name="isBarCode"
+            app:argType="boolean" />
+
+
+    </fragment>
+
+
+
+
+    <fragment
+        android:id="@+id/nav_finalImage"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.FinalImageFragment"
+        tools:layout="@layout/fragment_final_image"
+        android:label="Create QR or Barcode">
+
+        <argument
+            android:name="bitmapByteArray"
+            app:argType="string" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_fast_to_home"
+        app:destination="@id/nav_home" >
+    </action>
+</navigation>
+
+

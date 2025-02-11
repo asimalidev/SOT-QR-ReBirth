@@ -1,0 +1,261 @@
+<resources>
+    <string name="app_name">QR Code Scanner</string>
+    <string name="play_sound">Play Sound</string>
+    <string name="open_website_automatically">Open website</string>
+    <string name="copy_to_clipboard">Copy to Clipboard</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="qr_amp_barcode_scanner">QR &amp; Barcode Scanner</string>
+    <string name="scan_any_qr_code_or_barcode_to_get_nadditional_information_including_results">Scan any QR code or barcode to get additional information including results.</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="qr_amp_bar_code_scanner">QR &amp; Bar Code Scanner</string>
+    <string name="hold_your_device_over_a_qr_n_code_to_scan_it">Hold your device Over a QR\n code to scan it.</string>
+    <string name="this_action_may_contains_the_ads">This action may contains the ads.</string>
+    <string name="enter_app_link_here">Enter app Link here</string>
+    <string name="create_qr_code">Create QR Code</string>
+    <string name="_0">0</string>
+    <string name="event_title">Event Title</string>
+    <string name="all_day_event">All Day Event</string>
+    <string name="start_date">Start Date</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_date">End Date</string>
+    <string name="email">Email</string>
+    <string name="event_location">Event Location</string>
+    <string name="description">Description</string>
+    <string name="create_qr_codes">Create QR Code</string>
+    <string name="enter_text_or_paste_from_clipboard">Enter text or paste from clipboard</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="company_name">Company Name</string>
+    <string name="job_title">Job Title</string>
+    <string name="street_address">Street Address</string>
+    <string name="country">Country</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="text_without_special_character">Text without special character</string>
+    <string name="ad_is_loading">Ad is loading</string>
+    <string name="templates">Templates</string>
+    <string name="colors">Colors</string>
+    <string name="logos">Logos</string>
+    <string name="url">URL</string>
+    <string name="code">Code:</string>
+    <string name="format">Format:</string>
+    <string name="notes">Notes:</string>
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+    <string name="open_website">Open Website</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="enter_subject">Enter Subject</string>
+    <string name="enter_email_text">Enter Email Text</string>
+    <string name="supported_amp_unsupported_codes">Supported &amp; Unsupported codes</string>
+    <string name="scanning_tips">Scanning Tips</string>
+    <string name="scan_qr_code">Scan QR Code</string>
+    <string name="create_barcode">Create BarCode</string>
+    <string name="see_all">See All</string>
+    <string name="supported_codes">Supported Codes</string>
+    <string name="unsupported_codes">Unsupported Codes</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="save">Save</string>
+    <string name="scan_setting">Scan Setting</string>
+    <string name="vibrate">Vibrate</string>
+    <string name="general">General</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="more">More (Ad)</string>
+    <string name="feedback">Feedback</string>
+    <string name="website">Website</string>
+    <string name="view_code">View Code</string>
+    <string name="qr_amp_barcode_reader">QR &amp; BarCode Reader</string>
+    <string name="get_specific_information_by_adding_custom_nwebsites_into_the_barcode_search">Get specific information by adding custom\nwebsites into the barcode search</string>
+    <string name="let_s_start">Start</string>
+    <string name="detect_codes_within_picture_files_nor_scan_directly_using_the_camera">Detect codes within picture files or scan directly using the camera</string>
+    <string name="network_name">Network Name</string>
+    <string name="password">Password</string>
+    <string name="dialog_title_discard_changes">Discard Changes</string>
+    <string name="dialog_message_discard_changes">Are you sure you want to discard all changes?</string>
+    <string name="dialog_positive_button">Yes</string>
+    <string name="dialog_negative_button">No</string>
+    <string name="languages">Select the Language</string>
+    <string name="youtube">YouTube</string>
+    <string name="facebook">Facebook</string>
+    <string name="instagram">Instagram</string>
+    <string name="twitter">Twitter</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="daily_motion">Daily Motion</string>
+    <string name="apps">Apps</string>
+    <string name="clipboard">Clipboard</string>
+    <string name="contact">Contact</string>
+    <string name="wifi">Wifi</string>
+    <string name="location">Location</string>
+    <string name="calender">Calender</string>
+    <string name="batch_scanner">Batch Scanner</string>
+    <string name="qr_code_reader">Qr Code Reader</string>
+    <string name="help">Help</string>
+    <string name="history">History</string>
+    <string name="qr_code_scanner">QR Code Scanner</string>
+    <string name="qr_code_creation">Qr Code Creation</string>
+    <string name="scanner_tips">Scanner Tips</string>
+    <string name="settings">Settings</string>
+    <string name="bar_code_reader">Bar Code Reader</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="home">Home</string>
+    <string name="create">Create</string>
+    <string name="batch">Batch</string>
+    <string name="uppercase_text_without_special_characters">uppercase text without special characters</string>
+    <string name="enter_digits_only">Enter digits only</string>
+    <string name="enter_even_digits">Enter even digits</string>
+    <string name="enter_12_digits">Enter 12 digits</string>
+    <string name="enter_7_digits">Enter 7 digits</string>
+    <string name="enter_7_digits_starting_with_1">Enter 7 digits starting with 1</string>
+    <string name="enter_11_digits_only">Enter 11 digits only</string>
+    <string name="text_without_special_characters">Text without special characters</string>
+    <string name="invalid_input">Invalid input</string>
+
+
+    <string name="admod_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admod_banner_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admod_native_id" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="admod_interstitial_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admod_app_open_ad_id" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="admod_app_reward_id" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="admod_app_reward_inter_id" translatable="false">ca-app-pub-3940256099942544/5354046379</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <!-- FAN ID -->
+    <string name="fan_interstitial_id" translatable="false">1088964791852832_1088965305186114</string>
+    <string name="fan_native_id" translatable="false">1088964791852832_1088965385186106</string>
+    <string name="fan_banner_id" translatable="false">1088964791852832_1088965248519453</string>
+    <string name="fan_native_banner_id" translatable="false">1088964791852832_1088965481852763</string>
+    <string name="fan_reward_id" translatable="false">1088964791852832_1088965625186082</string>
+    <string name="facebook_app_id" translatable="false">1275652413377261</string>
+
+
+    <!-- MAX TEST ID -->
+    <string name="applovin_test_inter" translatable="false">c630fe3686063741</string>
+    <string name="applovin_test_banner" translatable="false">31cdd2e81ad9805e</string>
+    <string name="applovin_test_native" translatable="false">b8f6f81612cddf23</string>
+    <string name="applovin_test_reward" translatable="false">5ac0003d6da0d104</string>
+    <string name="language" translatable="false">Language</string>
+    <string name="english" translatable="false">English</string>
+    <string name="china" translatable="false">China</string>
+    <string name="france" translatable="false">France</string>
+    <string name="label_create_type">Create type</string>
+    <string name="qr_templates">QR Templates</string>
+    <string name="label_languages">Languages</string>
+    <string name="done">Done</string>
+    <string name="save_image">Save Image</string>
+    <string name="paste_code_on_image">Paste Code on Image</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="label_we_build_what_you_desire">We will build what you need</string>
+    <string name="label_select_features_fit_your_needs">Select features you desire</string>
+    <string name="label_scan_bar_code">Scan Barcode</string>
+    <string name="label_create_pdf">Create PDF</string>
+    <string name="label_translate_image">Translate Image</string>
+    <string name="label_search_image">Search Image</string>
+    <string name="label_search_Product">Search Product</string>
+    <string name="please_check_the_checkbox">Please select an option</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_preview_image">PreviewImageActivity</string>
+    <string name="detect_lenguage">Detect Lenguage</string>
+    <string name="translate">Translate</string>
+    <string name="search">Search</string>
+    <string name="proceed_to_next">Proceed to next</string>
+    <string name="translated_text">Translated Text</string>
+    <string name="enter_text">Enter Text</string>
+    <string name="text_translator">Text Translator</string>
+    <string name="ocr">OCR</string>
+    <string name="translator">Translator</string>
+    <string name="crop_image">Crop Image</string>
+    <string name="crop">Crop</string>
+    <string name="all_languages">All Languages</string>
+    <string name="flag">Flag</string>
+    <string name="translate_to">Translate to</string>
+    <string name="type_here_to_translate">Type here to translate</string>
+    <string name="scan_with_your_camera">Scan with your camera</string>
+    <string name="translate_image">Translate Image</string>
+    <string name="batch_scan">Batch Scan</string>
+    <string name="create_document">Create Document</string>
+    <string name="scan">Scan</string>
+    <string name="launch_qr_scanner_code_and_position_nyour_camera_over_the_qr_code_or_nbarcode_you_wish_to_scan">Launch QR Scanner Code and position\nyour camera over the QR code or\nbarcode you wish to scan</string>
+    <string name="the_app_will_automatically_nrecognize_and_decode_the_code">The app will automatically\nrecognize and decode the code</string>
+    <string name="transforming_your_desires_into_reality">Transforming your desires into reality.</string>
+    <string name="choose_the_features_that_suit_your_requirements">Choose the features that suit\nyour requirements.</string>
+    <string name="successfully_saved">Successfully Saved!</string>
+    <string name="open">Open</string>
+    <string name="export">Export</string>
+    <string name="exit_the_app">Exit The App </string>
+    <string name="no">NO</string>
+    <string name="yes">Yes</string>
+    <string name="selected_language">Selected Language</string>
+    <string name="search_language">Search Language</string>
+    <string name="no_results_found">No results found</string>
+    <string name="no_result_found_for">No result found for \"%1$s\"</string>
+    <string name="text">Text</string>
+    <string name="scanning_documents_please_wait">Scanning documents, please wait...</string>
+    <string name="fill_email_first">Please enter the text in the field</string>
+    <string name="document">Document</string>
+    <string name="share_as_image">Share as Image</string>
+    <string name="share_as_pdf">Share as PDF</string>
+    <string name="export_to_pdf">Export to PDF</string>
+    <string name="export_to_image">Export to Image</string>
+    <string name="save_document">Save document</string>
+    <string name="snap">Snap</string>
+    <string name="get_search_results">Get Search Results</string>
+    <string name="snippet">Snippet</string>
+    <string name="title">Title</string>
+    <string name="qr_code">QR Code</string>
+    <string name="save_qr">Save QR</string>
+    <string name="all">All</string>
+    <string name="created">Created</string>
+    <string name="scanned">Scanned</string>
+    <string name="design_your_custom_qr_code">Design Your Custom QR Code!</string>
+    <string name="your_digital_scanner_is_ready">Your Digital Scanner Is Ready!</string>
+    <string name="barcode_scanning_made_easy">Barcode Scanning Made Easy!</string>
+    <string name="scan_and_share_documents_seamlessly">Scan and Share Documents Seamlessly!</string>
+    <string name="effortless_qr_code_editing">Effortless QR Code Editing!</string>
+    <string name="unlock_the_world_with_live_translation">Unlock the World with Live Translation!</string>
+    <string name="scan_save_and_go">Scan, Save, and Go!</string>
+    <string name="create_your_perfect_qr_code_today">Create Your Perfect QR Code Today!</string>
+    <string name="transform_any_url_text_or_data_into_a_unique_qr_code">Transform any URL, text, or data into a unique QR code.</string>
+    <string name="scan_barcodes_and_qr_codes_instantly">Scan barcodes and QR codes instantly!</string>
+    <string name="point_your_camera_at_any_text_to_instantly_translate_it">Point your camera at any text to instantly translate it.</string>
+    <string name="snap_scan_and_save_your_documents">Snap, scan, and save your documents.</string>
+    <string name="choose_from_various_colors_and_templates_to_personalize_your_qr_code">Choose from various colors and templates to personalize your QR code.</string>
+    <string name="instantly_scan_barcodes_and_get_relevant_product_details">Instantly scan barcodes and get relevant product details.</string>
+    <string name="scan_documents_and_share_them_as_pdf_or_jpg_formats_with_ease">Scan documents and share them as PDF or JPG formats with ease.</string>
+    <string name="edit_and_customize_your_qr_codes_with_vibrant_colors_and_different_templates">Edit and customize your QR codes with vibrant colors and different templates.</string>
+    <string name="permission_neeeded">Permissions Neeeded</string>
+    <string name="discover_new_thing_as_blind_box_with_qr_scan_and_image_translation">Discover new thing as blind box with QR scan and image translation</string>
+    <string name="stay_tuned_to_these_awesome_things">Stay tuned to these awesome things</string>
+    <string name="awesome_upcoming_feature">Awesome upcoming feature:</string>
+    <string name="image_search">• image search</string>
+    <string name="object_detection">• object detection</string>
+    <string name="animated_qr_creation">• animated QR creation</string>
+    <string name="augmented_reality_ar">• augmented reality (AR)</string>
+    <string name="new_awesome_qr_style">New Awesome QR style</string>
+    <string name="check_it_out">Check it out</string>
+    <string name="yes_i_m_in">Yes, I\'m in</string>
+    <string name="remind_me_late">Remind me later</string>
+    <string name="update_me_daily_at">Update me daily at</string>
+    <string name="_05_01_pm">05:01 PM</string>
+    <string name="discover_awesome_features">Discover Awesome Features!</string>
+    <string name="scan_qr_codes_ninstantly">Scan QR Codes\nInstantly!</string>
+    <string name="quickly_decode_qr_codes_for_links_details_and_more">Quickly decode QR codes for links, details, and more.</string>
+    <string name="translate_anything_nfast">Translate Anything\nFast!</string>
+    <string name="convert_photos_and_text_into_your_nlanguage_instantly">Convert photos and text into your\nlanguage instantly!</string>
+    <string name="sharper_scans_better_nresults">Sharper Scans, Better\nResults!</string>
+    <string name="apply_filters_for_accuracy_and_save_as_pdf_or_image">Apply filters for accuracy and save as PDF or image.</string>
+    <string name="apply_filters_for_accuracy_and_save_as_npdf_or_image">Apply filters for accuracy and save as\nPDF or image.</string>
+    <string name="new_awesome_qr_nstyles_have_come">New awesome QR\nstyles have come</string>
+    <string name="these_modern_qr_codes_can_incorporate_colors_custom_logos_rounded_edges_and_unique_shapes">These modern QR codes can incorporate colors, custom logos, rounded edges, and unique shapes</string>
+    <string name="camera">Camera</string>
+    <string name="notification">Notification</string>
+    <string name="daily_awesome">Daily Awesome</string>
+    <string name="for_scanning_qr_and_image_translation">For scanning QR and image translation</string>
+    <string name="quick_scan_qr_from_the_notification_center">Quick scan QR from the notification center</string>
+    <string name="remind_you_to_daily_discover_new_awesome_things">Remind you to daily discover new awesome things</string>
+</resources>

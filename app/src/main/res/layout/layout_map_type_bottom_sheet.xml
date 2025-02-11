@@ -1,0 +1,45 @@
+<!-- layout_map_type_bottom_sheet.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Switch for Camera Permission -->
+    <TextView
+        android:id="@+id/tvCamera"
+        android:text="Switch Camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Switch
+        android:id="@+id/switchCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- Switch for Notification Permission -->
+    <TextView
+        android:id="@+id/tvNotification"
+        android:text="Switch Notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Switch
+        android:id="@+id/switchNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- Switch for Daily Awesome -->
+    <TextView
+        android:id="@+id/tvDailyAwesome"
+        android:text="Switch Daily Awesome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Switch
+        android:id="@+id/switchDailyAwesome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

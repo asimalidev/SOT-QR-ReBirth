@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:gravity="start"
+    android:orientation="horizontal">
+
+    <android.widget.LinearLayout
+        android:id="@+id/btn_scan_qr_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.widget.ImageView
+            android:id="@+id/btn_scan_qr"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_scancode" />
+
+        <android.widget.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/TextAppearance.Compat.Notification.Title"
+            android:text="Scan QR" />
+    </android.widget.LinearLayout>
+
+    <android.widget.LinearLayout
+        android:id="@+id/btn_create_qr_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.widget.ImageView
+            android:id="@+id/btn_create_qr"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/plus" />
+
+        <android.widget.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            style="@style/TextAppearance.Compat.Notification.Title"
+            android:text="Create QR" />
+    </android.widget.LinearLayout>
+
+    <android.widget.LinearLayout
+        android:id="@+id/btn_translate_image_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.widget.ImageView
+            android:id="@+id/btn_translate_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iv_translateimage" />
+
+        <android.widget.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            style="@style/TextAppearance.Compat.Notification.Title"
+            android:text="Translate" />
+    </android.widget.LinearLayout>
+
+    <android.widget.LinearLayout
+        android:id="@+id/btn_home_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.widget.ImageView
+            android:id="@+id/btn_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_home"
+            android:tint="@color/appBlue" />
+
+        <android.widget.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            style="@style/TextAppearance.Compat.Notification.Title"
+            android:text="@string/home" />
+    </android.widget.LinearLayout>
+</android.widget.LinearLayout>

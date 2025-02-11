@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@id/start"
+        motion:constraintSetEnd="@id/end"
+        motion:duration="1000">
+        <OnSwipe
+            motion:touchAnchorId="@id/cvTop"
+            motion:touchAnchorSide="bottom"
+            motion:dragDirection="dragUp" /> <!-- Allow upward drag -->
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/cvTop"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                motion:attributeName="Saturation"
+                motion:customFloatValue="1" />
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/cvTop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintWidth_default="percent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent">
+            <CustomAttribute
+                motion:attributeName="Saturation"
+                motion:customFloatValue="0" />
+        </Constraint>
+    </ConstraintSet>
+</MotionScene>
+
+

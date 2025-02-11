@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748946985512",
+    "project_id": "hcm104---qr-code-scanner",
+    "storage_bucket": "hcm104---qr-code-scanner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748946985512:android:7e57e4230940440dc55b1d",
+        "android_client_info": {
+          "package_name": "com.qrcodescanner.barcodereader.qrgenerator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyznZtB9c3AZifWLYVGsQoVrIqmLjOEm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/walkthrough_navigation"
+    app:startDestination="@+id/nav_walkThroughOne">
+
+    <fragment
+        android:id="@+id/nav_walkThroughOne"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.WalkThroughOneFragment"
+        tools:layout="@layout/fragment_walk_through_one">
+
+
+        <action
+            android:id="@+id/action_nav_walkThroughOne_to_nav_walkThroughTwo"
+            app:destination="@id/nav_walkThroughTwo" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_walkThroughFull"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.WalkThroughFullScreenAdFragment"
+        tools:layout="@layout/fragment_walk_through_full_screen_ad">
+
+
+        <action
+            android:id="@+id/action_nav_walkThroughFull_to_nav_walkThroughTwo"
+            app:destination="@id/nav_walkThroughTwo" />
+        <action
+            android:id="@+id/action_nav_walkThroughFull_to_nav_walkThroughThree"
+            app:destination="@id/nav_walkThroughThree" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_walkThroughTwo"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.WalkThroughTwoFragment"
+        tools:layout="@layout/fragment_walk_through_two">
+
+
+        <action
+            android:id="@+id/action_nav_walkThroughTwo_to_nav_walkThroughOne"
+            app:destination="@id/nav_walkThroughOne" />
+        <action
+            android:id="@+id/action_nav_walkThroughTwo_to_nav_walkThroughFull"
+            app:destination="@id/nav_walkThroughFull" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_walkThroughThree"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.WalkThroughThreeFragment"
+        tools:layout="@layout/fragment_walk_through_three">
+
+        <action
+            android:id="@+id/action_nav_walkThroughThree_to_nav_walkThroughFull"
+            app:destination="@id/nav_walkThroughFull" />
+    </fragment>
+
+</navigation>
