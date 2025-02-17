@@ -98,6 +98,8 @@ class DeepLinkingWebViewFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         viewBinding.webViewGoogle.destroy()
+        viewBinding.webViewBing.destroy()
+        viewBinding.webViewYandex.destroy()
     }
 
     private fun setupWebViewGoogle() {
@@ -139,7 +141,7 @@ class DeepLinkingWebViewFragment : Fragment() {
     }
 
     private fun setupWebViewBing() {
-        with(viewBinding.webViewGoogle) {
+        with(viewBinding.webViewBing) {
             settings.javaScriptEnabled = true
 
             webViewClient = object : WebViewClient() {
@@ -175,7 +177,7 @@ class DeepLinkingWebViewFragment : Fragment() {
     }
 
     private fun setupWebViewYandex() {
-        with(viewBinding.webViewGoogle) {
+        with(viewBinding.webViewYandex) {
             settings.javaScriptEnabled = true
 
             webViewClient = object : WebViewClient() {
