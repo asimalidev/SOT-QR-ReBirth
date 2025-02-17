@@ -127,7 +127,6 @@
     <string name="label_search_image">البحث عن صورة</string>
     <string name="label_search_Product">البحث عن المنتج</string>
     <string name="please_check_the_checkbox">يرجى التحقق من المربع</string>
-    <string name="hello_blank_fragment">مرحبا بالشاشة الفارغة</string>
     <string name="title_activity_main">النشاط الرئيسي</string>
     <string name="title_activity_preview_image">عرض الصورة</string>
     <string name="detect_lenguage">كشف اللغة</string>
@@ -228,5 +227,11 @@
     <string name="for_scanning_qr_and_image_translation">لمسح QR وترجمة الصور</string>
     <string name="quick_scan_qr_from_the_notification_center">مسح QR سريع من مركز الإشعارات</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">تذكيرك باكتشاف أشياء رائعة يومياً</string>
+    <string name="label_image_search">Image Search</string>
+    <string name="label_select_from_gallery">Select From Gallery</string>
+    <string name="label_take_a_photo">Take A Photo</string>
+    <string name="label_get_from_web">Get From Web</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_searched_image_results">Searched image result</string>
 
 </resources>

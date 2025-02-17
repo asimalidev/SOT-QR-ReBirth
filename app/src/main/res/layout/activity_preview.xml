@@ -27,7 +27,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:fontFamily="@font/lexend"
             android:src="@drawable/ic_close"
-            android:text="Translated Text"
+            android:text="@string/translated_text"
             android:textColor="@color/white"
             android:textSize="@dimen/_20sdp"
             app:layout_constraintBottom_toBottomOf="parent"

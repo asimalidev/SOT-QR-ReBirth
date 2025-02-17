@@ -35,9 +35,9 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.label.ImageLabeler;
+/*import com.google.mlkit.vision.label.ImageLabeler;
 import com.google.mlkit.vision.label.ImageLabeling;
-import com.google.mlkit.vision.label.defaults.ImageLabelerOptions;
+import com.google.mlkit.vision.label.defaults.ImageLabelerOptions;*/
 import com.qrcodescanner.barcodereader.qrgenerator.R;
 import com.qrcodescanner.barcodereader.qrgenerator.adapters.SearchResultsRVAdapter;
 import com.qrcodescanner.barcodereader.qrgenerator.models.dataModal;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         // Adding onClickListener for search button
         searchResultsBtn.setOnClickListener(v -> {
             // Calling a method to get search results
-            getResults();
+//            getResults();
         });
 
         // Initialize takeImageLauncher
@@ -169,39 +169,39 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getResults() {
-        // Clear existing results
-        dataModalArrayList.clear();
-
-        if (imageBitmap == null) {
-            Toast.makeText(MainActivity.this, "Please capture an image first.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Get image labels
-        InputImage image = InputImage.fromBitmap(imageBitmap, 0);
-        ImageLabeler labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS);
-
-        labeler.process(image)
-                .addOnSuccessListener(labels -> {
-                    // Task completed successfully
-                    if (labels.isEmpty()) {
-                        Toast.makeText(MainActivity.this, "No labels detected in image.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    String searchQuery = labels.get(0).getText();
-                    if (!currentLocationName.isEmpty()) {
-                        searchData(searchQuery, currentLocationName);  // Pass both searchQuery and location
-                    } else {
-                        Toast.makeText(MainActivity.this, "Location not available. Please enable location services.", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    // Task failed with an exception
-                    Toast.makeText(MainActivity.this, "Failed to detect image.", Toast.LENGTH_SHORT).show();
-                });
-    }
+//    private void getResults() {
+//        // Clear existing results
+//        dataModalArrayList.clear();
+//
+//        if (imageBitmap == null) {
+//            Toast.makeText(MainActivity.this, "Please capture an image first.", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        // Get image labels
+//        InputImage image = InputImage.fromBitmap(imageBitmap, 0);
+//        ImageLabeler labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS);
+//
+//        labeler.process(image)
+//                .addOnSuccessListener(labels -> {
+//                    // Task completed successfully
+//                    if (labels.isEmpty()) {
+//                        Toast.makeText(MainActivity.this, "No labels detected in image.", Toast.LENGTH_SHORT).show();
+//                        return;
+//                    }
+//
+//                    String searchQuery = labels.get(0).getText();
+//                    if (!currentLocationName.isEmpty()) {
+//                        searchData(searchQuery, currentLocationName);  // Pass both searchQuery and location
+//                    } else {
+//                        Toast.makeText(MainActivity.this, "Location not available. Please enable location services.", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .addOnFailureListener(e -> {
+//                    // Task failed with an exception
+//                    Toast.makeText(MainActivity.this, "Failed to detect image.", Toast.LENGTH_SHORT).show();
+//                });
+//    }
 
     private void searchData(String searchQuery, String location) {
         String apiKey = "59e92c90f42f2776fef3b295be0f55705b9da098bd215ad8a27611b3dae929dd";

@@ -127,7 +127,6 @@
     <string name="label_search_image">이미지 검색</string>
     <string name="label_search_Product">제품 검색</string>
     <string name="please_check_the_checkbox">체크박스를 확인하세요</string>
-    <string name="hello_blank_fragment">빈 화면</string>
     <string name="title_activity_main">메인 활동</string>
     <string name="title_activity_preview_image">이미지 미리보기</string>
     <string name="detect_lenguage">언어 감지</string>
@@ -228,5 +227,11 @@
     <string name="for_scanning_qr_and_image_translation">QR 스캔 및 이미지 번역용</string>
     <string name="quick_scan_qr_from_the_notification_center">알림 센터에서 QR을 빠르게 스캔</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">매일 새로운 멋진 것을 발견하도록 상기시켜줍니다</string>
+    <string name="label_image_search">Image Search</string>
+    <string name="label_select_from_gallery">Select From Gallery</string>
+    <string name="label_take_a_photo">Take A Photo</string>
+    <string name="label_get_from_web">Get From Web</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_searched_image_results">Searched image result</string>
 
 </resources>

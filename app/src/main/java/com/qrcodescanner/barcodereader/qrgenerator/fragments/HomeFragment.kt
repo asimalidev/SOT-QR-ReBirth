@@ -73,6 +73,7 @@ import com.qrcodescanner.barcodereader.qrgenerator.ads.CustomFirebaseEvents
 import com.qrcodescanner.barcodereader.qrgenerator.ads.NetworkCheck
 import com.qrcodescanner.barcodereader.qrgenerator.database.QRCodeDatabaseHelper
 import com.qrcodescanner.barcodereader.qrgenerator.utils.AdsProvider
+import com.qrcodescanner.barcodereader.qrgenerator.utils.PermissionUtils
 import com.qrcodescanner.barcodereader.qrgenerator.utils.native_home
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -328,7 +329,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.clBatchScan.setOnClickListener {
-            (activity as? HomeActivity)?.checkNetworkAndLoadAds()  // Hide the bottom bar when transition ends
+            (activity as? HomeActivity)?.checkNetworkAndLoadAds()
             CustomFirebaseEvents.logEvent(
                 context = requireActivity(),
                 screenName = "Home screen",
@@ -354,9 +355,29 @@ class HomeFragment : Fragment() {
             startDocumentScanningOrHandleBack()
         }
 
+        binding.clImageSearch.setOnClickListener {
+            CustomFirebaseEvents.logEvent(
+                context = requireActivity(),
+                screenName = "Home screen",
+                trigger = "Tap on Translate image",
+                eventName = "home_scr_tap_translateimg"
+            )
+            val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
+            } else {
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+            }
+
+            PermissionUtils.checkUserPermission(
+                activity = requireActivity(),
+                permissionsList = permissions.toList(),
+                onAllGranted = {
+                    navigateToImageSearch()
+                })
+        }
 
         binding.clTemplate.setOnClickListener {
-            (activity as? HomeActivity)?.checkNetworkAndLoadAds()  // Hide the bottom bar when transition ends
+            (activity as? HomeActivity)?.checkNetworkAndLoadAds()
             CustomFirebaseEvents.logEvent(
                 context = requireActivity(),
                 screenName = "Home screen",
@@ -637,7 +658,6 @@ class HomeFragment : Fragment() {
                         requireContext(),
                         Manifest.permission.READ_MEDIA_IMAGES
                     ) == PackageManager.PERMISSION_GRANTED -> {
-                // Permission is granted
                 pickImageFromGallery()
             }
 
@@ -897,6 +917,15 @@ class HomeFragment : Fragment() {
     private fun navigateToBatchScan() {
         val action = HomeFragmentDirections.actionNavHomeNavBatch()
         navController?.navigate(action)
+    }
+
+    private fun navigateToImageSearch() {
+        if (navController != null) {
+            val action = HomeFragmentDirections.actionNavHomeToNavImageSearch()
+            navController?.navigate(action)
+        } else {
+            isNavControllerAdded()
+        }
     }
 
     private fun navigateToCreateQrCode() {

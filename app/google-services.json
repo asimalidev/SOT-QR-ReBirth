@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "748946985512",
     "project_id": "hcm104---qr-code-scanner",
-    "storage_bucket": "hcm104---qr-code-scanner.appspot.com"
+    "storage_bucket": "hcm104---qr-code-scanner.firebasestorage.app"
   },
   "client": [
     {
@@ -22,7 +22,8 @@
         "appinvite_service": {
           "other_platform_oauth_client": []
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-8607249541097375~5959894020"
     }
   ],
   "configuration_version": "1"

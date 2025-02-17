@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:label="Home"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.HomeFragment"
+        android:label="Home"
         tools:layout="@layout/test_layout">
 
         <action
@@ -25,17 +25,17 @@
 
         <action
             android:id="@+id/action_nav_home_nav_history"
-            app:destination="@+id/nav_history"/>
+            app:destination="@+id/nav_history" />
 
         <action
             android:id="@+id/action_nav_home_nav_batch"
-            app:destination="@+id/nav_batch"/>
+            app:destination="@+id/nav_batch" />
 
         <action
             android:id="@+id/action_nav_home_to_nav_Setting"
             app:destination="@id/settingFragment" />
 
-         <action
+        <action
             android:id="@+id/action_nav_home_to_nav_create"
             app:destination="@id/nav_create" />
 
@@ -50,14 +50,66 @@
 
         <action
             android:id="@+id/action_nav_home_to_nav_scan_document"
-            app:destination="@+id/nav_scandocument"/>
+            app:destination="@+id/nav_scandocument" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_imageSearch"
+            app:destination="@id/nav_imageSearch" />
 
     </fragment>
 
     <fragment
         android:id="@+id/nav_scandocument"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ScanDocumentFragment"
-        tools:layout="@layout/fragment_scan_document">
+        tools:layout="@layout/fragment_scan_document"/>
+
+    <fragment
+        android:id="@+id/nav_imageSearch"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ImageSearchFragment"
+        tools:layout="@layout/fragment_image_search">
+        <action
+            android:id="@+id/action_nav_imageSearch_to_nav_home"
+            app:destination="@id/nav_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_home"
+            app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_nav_imageSearch_to_nav_cropper_image_search"
+            app:destination="@id/nav_cropper_image_search" >
+            <argument
+                android:name="imagePath"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cropper_image_search"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CropperImageSearchFragment"
+        tools:layout="@layout/fragment_cropper_image_search">
+        <argument
+            android:name="imagePath"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_nav_cropper_image_search_to_nav_imageSearch"
+            app:destination="@id/nav_imageSearch"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_imageSearch"
+            app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_nav_cropper_image_search_to_navDeepLinkingWebView"
+            app:destination="@id/navDeepLinkingWebView" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navDeepLinkingWebView"
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.DeepLinkingWebViewFragment"
+        tools:layout="@layout/fragment_deep_linking_web_view">
+
+        <action
+            android:id="@+id/action_navDeepLinkingWebView_to_nav_imageSearch"
+            app:destination="@id/nav_imageSearch"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_imageSearch"
+            app:popUpToInclusive="false"/>
     </fragment>
 
     <fragment
@@ -101,8 +153,6 @@
             <argument
                 android:name="qrCode"
                 app:argType="string" />
-
-
         </action>
 
         <action
@@ -111,8 +161,6 @@
             <argument
                 android:name="qrCode"
                 app:argType="string" />
-
-
         </action>
 
     </fragment>
@@ -127,8 +175,6 @@
         <action
             android:id="@+id/action_nav_viewqr_to_nav_showcode"
             app:destination="@id/nav_scancode" />
-
-
 
         <action
             android:id="@+id/action_nav_viewqr_to_nav_home"
@@ -155,15 +201,15 @@
 
     <fragment
         android:id="@+id/nav_create"
-        android:label="Create"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CreateQRFragment"
+        android:label="Create"
         tools:layout="@layout/fragment_create_q_r">
         <action
             android:id="@+id/action_nav_create_to_nav_home"
             app:destination="@id/nav_home"
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_home"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false" />
 
         <action
             android:id="@+id/action_nav_create_to_nav_calender"
@@ -173,11 +219,9 @@
             android:id="@+id/action_nav_create_to_nav_wifi"
             app:destination="@id/nav_wifi" />
 
-
         <action
             android:id="@+id/action_nav_create_to_nav_contact"
             app:destination="@id/nav_Contacts" />
-
 
         <action
             android:id="@+id/action_navCreateQR_to_navClipboard"
@@ -185,9 +229,7 @@
             <argument
                 android:name="clipboardText"
                 app:argType="string" />
-
         </action>
-
 
         <action
             android:id="@+id/action_navCreateQR_to_navApps"
@@ -196,6 +238,7 @@
         <action
             android:id="@+id/action_navCreateQR_to_navLocation"
             app:destination="@id/nav_location" />
+
         <action
             android:id="@+id/action_navCreateQR_to_navEmail"
             app:destination="@id/nav_email" />
@@ -207,7 +250,6 @@
             <argument
                 android:name="platform"
                 app:argType="string" />
-
         </action>
     </fragment>
 
@@ -219,7 +261,6 @@
         <action
             android:id="@+id/action_createLinksQRCode_to_createqrcode"
             app:destination="@id/nav_create" />
-
 
         <argument
             android:name="platform"
@@ -241,7 +282,7 @@
 
         <action
             android:id="@+id/action_urlcreation_to_finalImage"
-            app:destination="@id/nav_finalImage" >
+            app:destination="@id/nav_finalImage">
 
             <argument
                 android:name="bitmapByteArray"
@@ -261,16 +302,12 @@
             android:name="url"
             app:argType="string" />
 
-
     </fragment>
-
-
 
     <fragment
         android:id="@+id/nav_email"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.EmailFragment"
         tools:layout="@layout/fragment_email">
-
         <action
             android:id="@+id/emailfraggment_to_create_QR_Fragment"
             app:destination="@id/nav_create" />
@@ -296,9 +333,7 @@
 
         <action
             android:id="@+id/action_nav_web_nav_settings"
-            app:destination="@+id/settingFragment"/>
-
-
+            app:destination="@+id/settingFragment" />
     </fragment>
 
     <fragment
@@ -311,7 +346,7 @@
 
         <action
             android:id="@+id/action_email_to_finalImage"
-            app:destination="@id/nav_finalImage" >
+            app:destination="@id/nav_finalImage">
 
             <argument
                 android:name="bitmapByteArray"
@@ -320,9 +355,7 @@
             <argument
                 android:name="emaildata"
                 app:argType="string" />
-
         </action>
-
 
         <argument
             android:name="emailAddress"
@@ -333,14 +366,12 @@
         <argument
             android:name="message"
             app:argType="string" />
-
     </fragment>
 
     <fragment
         android:id="@+id/nav_apps"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.AppFragment"
         tools:layout="@layout/fragment_app">
-
         <action
             android:id="@+id/action_navAppFragment_to_createqr"
             app:destination="@id/nav_create" />
@@ -352,17 +383,15 @@
                 android:name="appLink"
                 app:argType="string" />
         </action>
-
     </fragment>
 
     <fragment
         android:id="@+id/nav_ShowQRForAppFragment"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowQRForAppFragment"
         tools:layout="@layout/fragment_show_q_r_for_app">
-
         <action
             android:id="@+id/action_showapp_to_finalImage"
-            app:destination="@id/nav_finalImage" >
+            app:destination="@id/nav_finalImage">
 
             <argument
                 android:name="bitmapByteArray"
@@ -376,19 +405,16 @@
         <argument
             android:name="appLink"
             app:argType="string" />
-
         <action
             android:id="@+id/action_showQRForAppFragment_to_navAppFragment"
             app:destination="@id/nav_create" />
 
     </fragment>
 
-
     <fragment
         android:id="@+id/nav_clipboard"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ClipboardFragment"
         tools:layout="@layout/fragment_clipboard">
-
         <action
             android:id="@+id/action_clipboardFragment_to_createqr"
             app:destination="@id/nav_create" />
@@ -403,22 +429,19 @@
                 android:name="clipboardText"
                 app:argType="string" />
         </action>
-
     </fragment>
-
 
     <fragment
         android:id="@+id/nav_showClipboardCode"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowClipboardQR"
         tools:layout="@layout/fragment_show_clipboard_q_r">
-
         <action
             android:id="@+id/action_clipboardFragment_to_CreateQRFragment"
             app:destination="@id/nav_create" />
 
         <action
             android:id="@+id/action_showclipboard_to_finalImage"
-            app:destination="@id/nav_finalImage" >
+            app:destination="@id/nav_finalImage">
 
             <argument
                 android:name="bitmapByteArray"
@@ -429,11 +452,11 @@
                 app:argType="string" />
         </action>
 
-
         <argument
             android:name="clipboardText"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/nav_Contacts"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ContactsFragment"
@@ -458,7 +481,7 @@
 
         <action
             android:id="@+id/action_showcontact_to_finalImage"
-            app:destination="@id/nav_finalImage" >
+            app:destination="@id/nav_finalImage">
 
             <argument
                 android:name="bitmapByteArray"
@@ -467,8 +490,6 @@
             <argument
                 android:name="qrCodeText"
                 app:argType="string" />
-
-
         </action>
 
         <action
@@ -484,7 +505,6 @@
         android:id="@+id/nav_wifi"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.WifiFragment"
         tools:layout="@layout/fragment_wifi">
-
         <action
             android:id="@+id/action_wifiFragment_to_createqr"
             app:destination="@id/nav_create" />
@@ -504,11 +524,9 @@
         android:id="@+id/nav_show_wifi_qr"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ShowWifiQrFragment"
         tools:layout="@layout/fragment_show_wifi_qr">
-
         <action
             android:id="@+id/action_showcontact_to_finalImage"
-            app:destination="@id/nav_finalImage" >
-
+            app:destination="@id/nav_finalImage">
             <argument
                 android:name="bitmapByteArray"
                 app:argType="string" />
@@ -522,7 +540,6 @@
             android:id="@+id/action_showwifiFragment_to_createqr"
             app:destination="@id/nav_create" />
 
-
         <argument
             android:name="networkName"
             app:argType="string" />
@@ -535,7 +552,6 @@
         android:id="@+id/nav_location"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.LocationFragment"
         tools:layout="@layout/fragment_location">
-
 
         <action
             android:id="@+id/action_locationFragment_to_createqr"
@@ -557,7 +573,7 @@
 
         <action
             android:id="@+id/action_location_to_finalImage"
-            app:destination="@id/nav_finalImage" >
+            app:destination="@id/nav_finalImage">
 
             <argument
                 android:name="bitmapByteArray"
@@ -583,7 +599,7 @@
 
         <action
             android:id="@+id/action_calenderFragment_to_createqr"
-            app:destination="@id/nav_create"/>
+            app:destination="@id/nav_create" />
 
         <action
             android:id="@+id/action_calenderFragment_to_showCalenderFragment"
@@ -624,7 +640,7 @@
 
         <action
             android:id="@+id/action_showcalender_to_finalImage"
-            app:destination="@id/nav_finalImage" >
+            app:destination="@id/nav_finalImage">
 
             <argument
                 android:name="bitmapByteArray"
@@ -637,7 +653,7 @@
 
         <action
             android:id="@+id/action_showcalenderFragment_to_createqr"
-            app:destination="@id/nav_create"/>
+            app:destination="@id/nav_create" />
 
 
         <argument
@@ -675,7 +691,7 @@
 
         <action
             android:id="@+id/action_createBarCodeFragment_to_home"
-            app:destination="@id/nav_home"/>
+            app:destination="@id/nav_home" />
         <action
             android:id="@+id/action_createBarCodeFragment_to_showBarcodeFragment"
             app:destination="@id/showBarcodeFragment">
@@ -694,7 +710,7 @@
 
         <action
             android:id="@+id/action_showBarCodeFragment_to_createbarcode"
-            app:destination="@id/createBarCodeFragment"/>
+            app:destination="@id/createBarCodeFragment" />
         <argument
             android:name="inputText"
             app:argType="string" />
@@ -708,7 +724,7 @@
         <action
             android:id="@+id/action_navLanguage_to_navSettings"
             app:destination="@id/settingFragment"
-            app:launchSingleTop="true"/>
+            app:launchSingleTop="true" />
 
 
     </fragment>
@@ -751,7 +767,7 @@
             app:destination="@id/settingFragment"
             app:launchSingleTop="true"
             app:popUpTo="@+id/settingFragment"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -761,7 +777,6 @@
         <action
             android:id="@+id/action_navuse_to_navHelp"
             app:destination="@id/nav_Help" />
-
 
 
     </fragment>
@@ -781,7 +796,7 @@
         android:id="@+id/nav_history"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.HistoryFragment"
         android:label="History"
-        tools:layout="@layout/fragment_history" >
+        tools:layout="@layout/fragment_history">
 
         <action
             android:id="@+id/action_history_to_scanqr"
@@ -789,7 +804,7 @@
 
         <action
             android:id="@+id/action_history_to_navshowqr"
-            app:destination="@id/nav_showcode" >
+            app:destination="@id/nav_showcode">
             <argument
                 android:name="qrCode"
                 app:argType="string" />
@@ -801,14 +816,14 @@
 
         <action
             android:id="@+id/action_history_to_naveditedQr"
-            app:destination="@id/viewQRCodeFragment1" >
+            app:destination="@id/viewQRCodeFragment1">
             <argument
                 android:name="qrCode"
                 app:argType="string" />
 
-<!--            <argument-->
-<!--                android:name="isFromHistory"-->
-<!--                app:argType="boolean" />-->
+            <!--            <argument-->
+            <!--                android:name="isFromHistory"-->
+            <!--                app:argType="boolean" />-->
         </action>
 
         <action
@@ -816,7 +831,7 @@
             app:destination="@id/nav_home"
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_home"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false" />
 
     </fragment>
 
@@ -840,9 +855,7 @@
             app:destination="@id/nav_home"
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_home"
-            app:popUpToInclusive="false"
-            >
-        </action>
+            app:popUpToInclusive="false"/>
 
     </fragment>
 
@@ -858,22 +871,21 @@
 
         <action
             android:id="@+id/action_showbatchFragment_to_batchFragment"
-            app:destination="@id/nav_batch">
-        </action>
+            app:destination="@id/nav_batch"/>
 
         <action
             android:id="@+id/action_showBatchFragment_to_createQRorBarcodeFragment"
-            app:destination="@id/nav_createqrorbarcode" >
-        <argument
-            android:name="qrCodeText"
-            app:argType="string" />
-        <argument
-            android:name="isQrCode"
-            app:argType="boolean" />
+            app:destination="@id/nav_createqrorbarcode">
+            <argument
+                android:name="qrCodeText"
+                app:argType="string" />
+            <argument
+                android:name="isQrCode"
+                app:argType="boolean" />
 
             <argument
-            android:name="isBarCode"
-            app:argType="boolean" />
+                android:name="isBarCode"
+                app:argType="boolean" />
 
 
         </action>
@@ -886,7 +898,7 @@
 
         <action
             android:id="@+id/nav_createqrorbarcode_to_nav_webview"
-            app:destination="@id/nav_webfragment" >
+            app:destination="@id/nav_webfragment">
             <argument
                 android:name="url"
                 app:argType="string" />
@@ -904,17 +916,13 @@
             android:name="isBarCode"
             app:argType="boolean" />
 
-
     </fragment>
-
-
-
 
     <fragment
         android:id="@+id/nav_finalImage"
         android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.FinalImageFragment"
-        tools:layout="@layout/fragment_final_image"
-        android:label="Create QR or Barcode">
+        android:label="Create QR or Barcode"
+        tools:layout="@layout/fragment_final_image">
 
         <argument
             android:name="bitmapByteArray"
@@ -923,8 +931,7 @@
 
     <action
         android:id="@+id/action_fast_to_home"
-        app:destination="@id/nav_home" >
-    </action>
+        app:destination="@id/nav_home"/>
 </navigation>
 
 

@@ -8,5 +8,7 @@
 
     <!-- Allows access to files in the internal storage's files directory -->
     <files-path name="internal_files" path="." />
+
+    <external-path name="external_storage" path="DCIM/ImageSearchTemp/" />
 </paths>
 

@@ -361,6 +361,42 @@
                         app:layout_constraintTop_toBottomOf="@+id/clTranslateImage"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clImageSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="108dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="@+id/clTranslateImage"
+                        app:layout_constraintStart_toStartOf="@+id/clTranslateImage"
+                        app:layout_constraintTop_toBottomOf="@+id/layoutAdNative">
+
+                        <ImageView
+                            android:id="@+id/ivImageSearch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_image_search"
+                            app:layout_constraintBottom_toTopOf="@+id/tvImageSearch"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.5" />
+
+                        <TextView
+                            android:id="@+id/tvImageSearch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lexend"
+                            android:text="@string/label_image_search"
+                            android:textColor="@color/black"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ivImageSearch"
+                            app:layout_constraintVertical_bias="0.5" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/clTemplate"
                         android:layout_width="0dp"
                         android:layout_height="150dp"
@@ -368,7 +404,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layoutAdNative">
+                        app:layout_constraintTop_toBottomOf="@+id/clImageSearch">
 
                         <TextView
                             android:id="@+id/textView15"

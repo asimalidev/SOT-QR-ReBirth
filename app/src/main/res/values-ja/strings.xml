@@ -127,7 +127,6 @@
     <string name="label_search_image">画像を検索</string>
     <string name="label_search_Product">製品を検索</string>
     <string name="please_check_the_checkbox">チェックボックスを確認してください</string>
-    <string name="hello_blank_fragment">空のフラグメント</string>
     <string name="title_activity_main">メインアクティビティ</string>
     <string name="title_activity_preview_image">画像プレビュー</string>
     <string name="detect_lenguage">言語を検出する</string>
@@ -228,6 +227,12 @@
     <string name="for_scanning_qr_and_image_translation">QRコードのスキャンと画像翻訳のために</string>
     <string name="quick_scan_qr_from_the_notification_center">通知センターからのクイックスキャン</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">毎日新しい素晴らしいものを発見することを思い出させます</string>
+    <string name="label_image_search">Image Search</string>
+    <string name="label_select_from_gallery">Select From Gallery</string>
+    <string name="label_take_a_photo">Take A Photo</string>
+    <string name="label_get_from_web">Get From Web</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_searched_image_results">Searched image result</string>
 
 
 </resources>

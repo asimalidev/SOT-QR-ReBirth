@@ -127,7 +127,6 @@
     <string name="label_search_image">Buscar imagen</string>
     <string name="label_search_Product">Buscar producto</string>
     <string name="please_check_the_checkbox">Por favor, marque la casilla</string>
-    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
     <string name="title_activity_main">Actividad Principal</string>
     <string name="title_activity_preview_image">Vista previa de la imagen</string>
     <string name="detect_lenguage">Detectar Idioma</string>
@@ -228,6 +227,12 @@
     <string name="for_scanning_qr_and_image_translation">Para escanear QR y traducir imágenes</string>
     <string name="quick_scan_qr_from_the_notification_center">Escaneo rápido de QR desde el centro de notificaciones</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">Recordarte descubrir cosas increíbles todos los días</string>
+    <string name="label_image_search">Image Search</string>
+    <string name="label_select_from_gallery">Select From Gallery</string>
+    <string name="label_take_a_photo">Take A Photo</string>
+    <string name="label_get_from_web">Get From Web</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_searched_image_results">Searched image result</string>
 
 
 </resources>

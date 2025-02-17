@@ -156,8 +156,6 @@
     <string name="label_search_image">Search Image</string>
     <string name="label_search_Product">Search Product</string>
     <string name="please_check_the_checkbox">Please select an option</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_preview_image">PreviewImageActivity</string>
     <string name="detect_lenguage">Detect Lenguage</string>
@@ -258,4 +256,10 @@
     <string name="for_scanning_qr_and_image_translation">For scanning QR and image translation</string>
     <string name="quick_scan_qr_from_the_notification_center">Quick scan QR from the notification center</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">Remind you to daily discover new awesome things</string>
+    <string name="label_image_search">Image Search</string>
+    <string name="label_select_from_gallery">Select From Gallery</string>
+    <string name="label_take_a_photo">Take A Photo</string>
+    <string name="label_get_from_web">Get From Web</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_searched_image_results">Searched image result</string>
 </resources>

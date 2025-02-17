@@ -127,7 +127,6 @@
     <string name="label_search_image">छवि खोजें</string>
     <string name="label_search_Product">उत्पाद खोजें</string>
     <string name="please_check_the_checkbox">कृपया चेकबॉक्स को चेक करें</string>
-    <string name="hello_blank_fragment">नमस्ते खाली खंड</string>
     <string name="title_activity_main">मुख्य गतिविधि</string>
     <string name="title_activity_preview_image">छवि पूर्वावलोकन</string>
     <string name="detect_lenguage">भाषा पहचानें</string>
@@ -228,6 +227,12 @@
     <string name="for_scanning_qr_and_image_translation">QR स्कैन और छवि अनुवाद के लिए</string>
     <string name="quick_scan_qr_from_the_notification_center">सूचना केंद्र से त्वरित QR स्कैन</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">आपको प्रतिदिन नई अद्भुत चीजें खोजने की याद दिलाएं</string>
+    <string name="label_image_search">Image Search</string>
+    <string name="label_select_from_gallery">Select From Gallery</string>
+    <string name="label_take_a_photo">Take A Photo</string>
+    <string name="label_get_from_web">Get From Web</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_searched_image_results">Searched image result</string>
 
 
 </resources>

@@ -61,7 +61,6 @@ import com.qrcodescanner.barcodereader.qrgenerator.database.QRCodeDatabaseHelper
 import com.qrcodescanner.barcodereader.qrgenerator.databinding.ActivityHomeBinding
 import com.qrcodescanner.barcodereader.qrgenerator.databinding.LayoutPermissionsBottomSheetBinding
 import com.qrcodescanner.barcodereader.qrgenerator.fragments.HomeFragmentDirections
-import com.qrcodescanner.barcodereader.qrgenerator.fragments.ScanCode
 import com.qrcodescanner.barcodereader.qrgenerator.fragments.SettingFragment
 import com.qrcodescanner.barcodereader.qrgenerator.models.FullscreenDialogFragment
 import com.qrcodescanner.barcodereader.qrgenerator.models.Permission
@@ -92,6 +91,7 @@ class HomeActivity : BaseActivity(), HistoryListener {
     private lateinit var dbHelper: QRCodeDatabaseHelper
     private lateinit var permissionsList: MutableList<Permission>
     private lateinit var permissionAdapter: PermissionAdapter
+    private var blockVisibilityFromOtherFragments: Boolean = true
     private var isNotificationEnabled: Boolean = false
     private var isDailyAwesomeEnabled: Boolean = false
     private lateinit var scannerLauncher: ActivityResultLauncher<IntentSenderRequest>
@@ -282,41 +282,46 @@ class HomeActivity : BaseActivity(), HistoryListener {
     }
 
     private fun showPermissionsDialogIfNeeded() {
-        val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-        // Retrieve individual permission states
-        val isFirstTime = sharedPreferences.getBoolean("isFirstTime", true)
-        val isCameraPermissionEnabled = getSavedPermissionState("cameraPermission")
-        isNotificationEnabled = getSavedPermissionState("notificationPermission")
-        isDailyAwesomeEnabled = getSavedPermissionState("dailyAwesomePermission")
+        if (blockVisibilityFromOtherFragments) {
+            val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+            val isFirstTime = sharedPreferences.getBoolean("isFirstTime", true)
+            val isCameraPermissionEnabled = getSavedPermissionState("cameraPermission")
+            isNotificationEnabled = getSavedPermissionState("notificationPermission")
+            isDailyAwesomeEnabled = getSavedPermissionState("dailyAwesomePermission")
 
-        // Log the current states for debugging
-        Log.e("PermissionsCheckNew", "isFirstTime: $isFirstTime")
-        Log.e("PermissionsCheckNew", "isCameraPermissionEnabled: $isCameraPermissionEnabled")
-        Log.e("PermissionsCheckNew", "isNotificationEnabled: $isNotificationEnabled")
-        Log.e("PermissionsCheckNew", "isDailyAwesomeEnabled: $isDailyAwesomeEnabled")
+            // Log the current states for debugging
+            Log.e("PermissionsCheckNew", "isFirstTime: $isFirstTime")
+            Log.e("PermissionsCheckNew", "isCameraPermissionEnabled: $isCameraPermissionEnabled")
+            Log.e("PermissionsCheckNew", "isNotificationEnabled: $isNotificationEnabled")
+            Log.e("PermissionsCheckNew", "isDailyAwesomeEnabled: $isDailyAwesomeEnabled")
 
-        // Show the dialog if any permission is not enabled
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA
-            ) != PackageManager.PERMISSION_GRANTED
-            || ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-            || !isDailyAwesomeEnabled
-        ) {
-            Log.e("PermissionsCheckNew", "Condition met: Showing permissions dialog")
-            showPermissionsDialog()
-        } else {
-            Log.e("PermissionsCheckNew", "Condition not met: Not showing permissions dialog")
+            // Show the dialog if any permission is not enabled
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.CAMERA
+                ) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+                || !isDailyAwesomeEnabled
+            ) {
+                Log.e("PermissionsCheckNew", "Condition met: Showing permissions dialog")
+                showPermissionsDialog()
+            } else {
+                Log.e("PermissionsCheckNew", "Condition not met: Not showing permissions dialog")
+            }
+
+            // Mark first-time usage as false
+            if (isFirstTime) {
+                Log.e("PermissionsCheckNew", "Marking first time as false")
+                sharedPreferences.edit().putBoolean("isFirstTime", false).apply()
+            }
         }
+    }
 
-        // Mark first-time usage as false
-        if (isFirstTime) {
-            Log.e("PermissionsCheckNew", "Marking first time as false")
-            sharedPreferences.edit().putBoolean("isFirstTime", false).apply()
-        }
+    fun changeVisibility(bool: Boolean) {
+        blockVisibilityFromOtherFragments = bool
     }
 
     private fun startDocumentScanningOrHandleBack() {
@@ -423,6 +428,11 @@ class HomeActivity : BaseActivity(), HistoryListener {
         bottomSheetDialog.setOnDismissListener {
             isBottomSheetVisible = false
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        changeVisibility(bool = true)
     }
 
     fun showNativeAdIfAvailable(
@@ -896,8 +906,8 @@ class HomeActivity : BaseActivity(), HistoryListener {
                 MODE_PRIVATE
             ).getBoolean(banner, true)
         ) {
-            loadShowBannerAd()
             adLayout.visibility = View.VISIBLE
+            loadShowBannerAd()
         } else {
             adLayout.visibility = View.GONE // Hide the ad layout if no network
             adLayoutcl.visibility = View.GONE
@@ -995,6 +1005,20 @@ class HomeActivity : BaseActivity(), HistoryListener {
                 clBannerLayout?.visibility = View.GONE
             }
         }
+    }
+
+    fun updateAdLayoutVisibility(shouldShowAd: Boolean) {
+        val adLayout = findViewById<View>(R.id.bannerFr)
+        val clBannerLayout = findViewById<ConstraintLayout>(R.id.clbanner)
+
+        if (shouldShowAd) {
+            adLayout?.visibility = View.VISIBLE
+            clBannerLayout?.visibility = View.VISIBLE
+        } else {
+            adLayout?.visibility = View.GONE
+            clBannerLayout?.visibility = View.GONE
+        }
+
     }
 
     override fun onHistoryListEmpty(
