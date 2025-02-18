@@ -260,6 +260,24 @@
     <string name="label_select_from_gallery">Select From Gallery</string>
     <string name="label_take_a_photo">Take A Photo</string>
     <string name="label_get_from_web">Get From Web</string>
-    <string name="label_ok">Ok</string>
+    <string name="label_ok">OK</string>
     <string name="label_searched_image_results">Searched image result</string>
+    <string name="label_no_internet">No Internet…!</string>
+    <string name="processing_failed">Processing Failed</string>
+    <string name="label_copied_google_link">Copied Google link</string>
+    <string name="label_share_google_link">Share Google link</string>
+    <string name="label_error_processing_image">Error Processing Image</string>
+    <string name="label_preparing_your_image">Preparing your image</string>
+
+    <string-array name="loading_messages">
+        <item>Preparing your image…!</item>
+        <item>Hold on a moment…!</item>
+        <item>Almost there…!</item>
+        <item>Fetching the best results for you…!</item>
+        <item>Processing your request…!</item>
+        <item>Optimizing for better results…!</item>
+        <item>Just a few more seconds…!</item>
+        <item>Finalizing your search…!</item>
+        <item>Hang tight, were on it…!</item>
+    </string-array>
 </resources>

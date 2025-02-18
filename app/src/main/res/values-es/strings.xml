@@ -164,7 +164,7 @@
     <string name="no_results_found">No se encontraron resultados</string>
     <string name="no_result_found_for">No se encontraron resultados para "%1$s"</string>
     <string name="text">Texto</string>
-    <string name="scanning_documents_please_wait">Escaneando documentos, por favor espere...</string>
+    <string name="scanning_documents_please_wait">Escaneando documentos, por favor espere…</string>
     <string name="fill_email_first">Por favor, ingrese el texto en el campo</string>
     <string name="document">Documento</string>
     <string name="share_as_image">Compartir como imagen</string>
@@ -227,12 +227,29 @@
     <string name="for_scanning_qr_and_image_translation">Para escanear QR y traducir imágenes</string>
     <string name="quick_scan_qr_from_the_notification_center">Escaneo rápido de QR desde el centro de notificaciones</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">Recordarte descubrir cosas increíbles todos los días</string>
-    <string name="label_image_search">Image Search</string>
-    <string name="label_select_from_gallery">Select From Gallery</string>
-    <string name="label_take_a_photo">Take A Photo</string>
-    <string name="label_get_from_web">Get From Web</string>
-    <string name="label_ok">Ok</string>
-    <string name="label_searched_image_results">Searched image result</string>
+    <string name="label_image_search">Búsqueda de imágenes</string>
+    <string name="label_select_from_gallery">Seleccionar de la galería</string>
+    <string name="label_take_a_photo">Tomar una foto</string>
+    <string name="label_get_from_web">Obtener de la web</string>
+    <string name="label_ok">Aceptar</string>
+    <string name="label_searched_image_results">Resultados de búsqueda de imágenes</string>
+    <string name="label_no_internet">¡Sin Internet…!</string>
+    <string name="processing_failed">Fallo en el procesamiento</string>
+    <string name="label_copied_google_link">Enlace de Google copiado</string>
+    <string name="label_share_google_link">Compartir enlace de Google</string>
+    <string name="label_error_processing_image">Error al procesar la imagen</string>
+    <string name="label_preparing_your_image">Preparando tu imagen…!</string>
 
+    <string-array name="loading_messages">
+        <item>Preparando tu imagen…!</item>
+        <item>Espera un momento…!</item>
+        <item>Casi listo…!</item>
+        <item>Buscando los mejores resultados para ti…!</item>
+        <item>Procesando tu solicitud…!</item>
+        <item>Optimizando para mejores resultados…!</item>
+        <item>Solo unos segundos más…!</item>
+        <item>Finalizando tu búsqueda…!</item>
+        <item>Espera un poco, estamos en ello…!</item>
+    </string-array>
 
 </resources>

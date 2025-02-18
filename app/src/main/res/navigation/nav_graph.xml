@@ -64,8 +64,8 @@
 
     <fragment
         android:id="@+id/nav_imageSearch"
-        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.ImageSearchFragment"
-        tools:layout="@layout/fragment_image_search">
+        android:name="com.qrcodescanner.barcodereader.qrgenerator.fragments.CameraCaptureImageSearchFragment"
+        tools:layout="@layout/fragment_camera_capture_image_search">
         <action
             android:id="@+id/action_nav_imageSearch_to_nav_home"
             app:destination="@id/nav_home"
@@ -110,6 +110,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_imageSearch"
             app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_navDeepLinkingWebView_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment

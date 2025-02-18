@@ -164,7 +164,7 @@
     <string name="no_results_found">कोई परिणाम नहीं मिला</string>
     <string name="no_result_found_for">"%1$s" के लिए कोई परिणाम नहीं मिला</string>
     <string name="text">पाठ</string>
-    <string name="scanning_documents_please_wait">दस्तावेज़ स्कैन किए जा रहे हैं, कृपया प्रतीक्षा करें...</string>
+    <string name="scanning_documents_please_wait">दस्तावेज़ स्कैन किए जा रहे हैं, कृपया प्रतीक्षा करें…</string>
     <string name="fill_email_first">कृपया फ़ील्ड में टेक्स्ट डालें</string>
     <string name="document">दस्तावेज़</string>
     <string name="share_as_image">छवि के रूप में साझा करें</string>
@@ -227,12 +227,29 @@
     <string name="for_scanning_qr_and_image_translation">QR स्कैन और छवि अनुवाद के लिए</string>
     <string name="quick_scan_qr_from_the_notification_center">सूचना केंद्र से त्वरित QR स्कैन</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">आपको प्रतिदिन नई अद्भुत चीजें खोजने की याद दिलाएं</string>
-    <string name="label_image_search">Image Search</string>
-    <string name="label_select_from_gallery">Select From Gallery</string>
-    <string name="label_take_a_photo">Take A Photo</string>
-    <string name="label_get_from_web">Get From Web</string>
-    <string name="label_ok">Ok</string>
-    <string name="label_searched_image_results">Searched image result</string>
+    <string name="label_image_search">छवि खोज</string>
+    <string name="label_select_from_gallery">गैलरी से चुनें</string>
+    <string name="label_take_a_photo">फोटो लें</string>
+    <string name="label_get_from_web">वेब से प्राप्त करें</string>
+    <string name="label_ok">ठीक है</string>
+    <string name="label_searched_image_results">खोजी गई छवि परिणाम</string>
+    <string name="label_no_internet">कोई इंटरनेट नहीं…!</string>
+    <string name="processing_failed">प्रसंस्करण विफल</string>
+    <string name="label_copied_google_link">Google लिंक कॉपी किया गया</string>
+    <string name="label_share_google_link">Google लिंक साझा करें</string>
+    <string name="label_error_processing_image">छवि संसाधित करने में त्रुटि</string>
+    <string name="label_preparing_your_image">आपकी छवि तैयार की जा रही है…!</string>
 
+    <string-array name="loading_messages">
+        <item>आपकी छवि तैयार की जा रही है…!</item>
+        <item>कृपया एक पल रुके…!</item>
+        <item>लगभग हो गया…!</item>
+        <item>आपके लिए सर्वोत्तम परिणाम लाए जा रहे हैं…!</item>
+        <item>आपका अनुरोध संसाधित किया जा रहा है…!</item>
+        <item>बेहतर परिणामों के लिए अनुकूलित किया जा रहा है…!</item>
+        <item>बस कुछ ही सेकंड और…!</item>
+        <item>आपकी खोज को अंतिम रूप दिया जा रहा है…!</item>
+        <item>रुके रहें, हम इस पर काम कर रहे हैं…!</item>
+    </string-array>
 
 </resources>

@@ -164,7 +164,7 @@
     <string name="no_results_found">結果が見つかりませんでした</string>
     <string name="no_result_found_for">"%1$s"の結果は見つかりませんでした</string>
     <string name="text">テキスト</string>
-    <string name="scanning_documents_please_wait">ドキュメントをスキャン中です。少々お待ちください...</string>
+    <string name="scanning_documents_please_wait">ドキュメントをスキャン中です。少々お待ちください…</string>
     <string name="fill_email_first">フィールドにテキストを入力してください</string>
     <string name="document">ドキュメント</string>
     <string name="share_as_image">画像として共有</string>
@@ -227,12 +227,29 @@
     <string name="for_scanning_qr_and_image_translation">QRコードのスキャンと画像翻訳のために</string>
     <string name="quick_scan_qr_from_the_notification_center">通知センターからのクイックスキャン</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">毎日新しい素晴らしいものを発見することを思い出させます</string>
-    <string name="label_image_search">Image Search</string>
-    <string name="label_select_from_gallery">Select From Gallery</string>
-    <string name="label_take_a_photo">Take A Photo</string>
-    <string name="label_get_from_web">Get From Web</string>
-    <string name="label_ok">Ok</string>
-    <string name="label_searched_image_results">Searched image result</string>
+    <string name="label_image_search">画像検索</string>
+    <string name="label_select_from_gallery">ギャラリーから選択</string>
+    <string name="label_take_a_photo">写真を撮る</string>
+    <string name="label_get_from_web">ウェブから取得</string>
+    <string name="label_ok">OK</string>
+    <string name="label_searched_image_results">検索された画像結果</string>
+    <string name="label_no_internet">インターネットがありません…！</string>
+    <string name="processing_failed">処理に失敗しました</string>
+    <string name="label_copied_google_link">Googleリンクをコピーしました</string>
+    <string name="label_share_google_link">Googleリンクを共有</string>
+    <string name="label_error_processing_image">画像の処理エラー</string>
+    <string name="label_preparing_your_image">画像を準備中…！</string>
 
+    <string-array name="loading_messages">
+        <item>画像を準備中…！</item>
+        <item>少々お待ちください…！</item>
+        <item>もうすぐ完了します…！</item>
+        <item>最適な結果を取得中…！</item>
+        <item>リクエストを処理中…！</item>
+        <item>より良い結果のために最適化中…！</item>
+        <item>あと数秒だけ…！</item>
+        <item>検索を最終処理中…！</item>
+        <item>しばらくお待ちください、作業中です…！</item>
+    </string-array>
 
 </resources>

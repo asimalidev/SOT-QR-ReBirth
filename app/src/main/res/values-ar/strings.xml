@@ -227,11 +227,29 @@
     <string name="for_scanning_qr_and_image_translation">لمسح QR وترجمة الصور</string>
     <string name="quick_scan_qr_from_the_notification_center">مسح QR سريع من مركز الإشعارات</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">تذكيرك باكتشاف أشياء رائعة يومياً</string>
-    <string name="label_image_search">Image Search</string>
-    <string name="label_select_from_gallery">Select From Gallery</string>
-    <string name="label_take_a_photo">Take A Photo</string>
-    <string name="label_get_from_web">Get From Web</string>
-    <string name="label_ok">Ok</string>
-    <string name="label_searched_image_results">Searched image result</string>
+    <string name="label_image_search">بحث عن صورة</string>
+    <string name="label_select_from_gallery">اختر من المعرض</string>
+    <string name="label_take_a_photo">التقط صورة</string>
+    <string name="label_get_from_web">احصل من الويب</string>
+    <string name="label_ok">موافق</string>
+    <string name="label_searched_image_results">نتائج البحث عن الصور</string>
+    <string name="label_no_internet">لا يوجد إنترنت…!</string>
+    <string name="processing_failed">فشل المعالجة</string>
+    <string name="label_copied_google_link">تم نسخ رابط Google</string>
+    <string name="label_share_google_link">مشاركة رابط Google</string>
+    <string name="label_error_processing_image">خطأ في معالجة الصورة</string>
+    <string name="label_preparing_your_image">جارٍ تحضير صورتك…!</string>
+
+    <string-array name="loading_messages">
+        <item>جارٍ تحضير صورتك…!</item>
+        <item>انتظر لحظة…!</item>
+        <item>اقتربنا من الانتهاء…!</item>
+        <item>جلب أفضل النتائج لك…!</item>
+        <item>جارٍ معالجة طلبك…!</item>
+        <item>تحسين النتائج للحصول على أداء أفضل…!</item>
+        <item>بضع ثوانٍ فقط…!</item>
+        <item>إنهاء البحث…!</item>
+        <item>تمهل قليلًا، نحن نعمل على ذلك…!</item>
+    </string-array>
 
 </resources>

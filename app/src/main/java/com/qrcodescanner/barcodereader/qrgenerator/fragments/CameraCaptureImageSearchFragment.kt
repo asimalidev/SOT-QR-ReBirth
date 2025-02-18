@@ -33,17 +33,17 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.qrcodescanner.barcodereader.qrgenerator.R
 import com.qrcodescanner.barcodereader.qrgenerator.activities.HomeActivity
 import com.qrcodescanner.barcodereader.qrgenerator.ads.CustomFirebaseEvents
-import com.qrcodescanner.barcodereader.qrgenerator.databinding.FragmentImageSearchBinding
+import com.qrcodescanner.barcodereader.qrgenerator.databinding.FragmentCameraCaptureImageSearchBinding
 import com.qrcodescanner.barcodereader.qrgenerator.utils.Utils.hideSystemUI
 import java.io.File
 import java.io.FileOutputStream
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class ImageSearchFragment : Fragment() {
+class CameraCaptureImageSearchFragment : Fragment() {
 
     var navController: NavController? = null
-    private lateinit var viewBinding: FragmentImageSearchBinding
+    private lateinit var viewBinding: FragmentCameraCaptureImageSearchBinding
 
     private var imageCapture: ImageCapture? = null
     private lateinit var cameraExecutor: ExecutorService
@@ -65,7 +65,7 @@ class ImageSearchFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        viewBinding = FragmentImageSearchBinding.inflate(inflater, container, false)
+        viewBinding = FragmentCameraCaptureImageSearchBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
 
@@ -73,19 +73,19 @@ class ImageSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         isNavControllerAdded()
         hideSystemUI(requireActivity())
+
+        CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "cam_capture_src")
+
         val activity = requireActivity() as HomeActivity
-        activity.updateAdLayoutVisibility(shouldShowAd = false)
+        activity.updateAdLayoutVisibility(shouldShowAd = true)
+        activity.reloadAds()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                CustomFirebaseEvents.logEvent(
-                    context = requireActivity(),
-                    screenName = "Tab ImageSearch",
-                    trigger = "User tap button Back",
-                    eventName = "tab_image_search_scr_tap_back")
+                CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "cam_capture_scr_tap_back")
                 val activity = requireActivity() as HomeActivity
                 activity.changeVisibility(bool = true)
                 if (navController != null) {
-                    val action = ImageSearchFragmentDirections.actionNavImageSearchToNavHome()
+                    val action = CameraCaptureImageSearchFragmentDirections.actionNavImageSearchToNavHome()
                     navController?.navigate(action)
                 } else {
                     isNavControllerAdded()
@@ -107,17 +107,20 @@ class ImageSearchFragment : Fragment() {
             val activity = requireActivity() as HomeActivity
             activity.changeVisibility(bool = true)
             if (navController != null) {
-                val action = ImageSearchFragmentDirections.actionNavImageSearchToNavHome()
+                val action = CameraCaptureImageSearchFragmentDirections.actionNavImageSearchToNavHome()
                 navController?.navigate(action)
             } else {
                 isNavControllerAdded()
             }
+            CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "cam_capture_scr_tap_close")
         }
         viewBinding.btnCapture.setOnClickListener {
             takePhoto()
+            CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "cam_capture_scr_tap_photo")
         }
         viewBinding.icGallery.setOnClickListener {
             pickImageFromGallery()
+            CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "cam_capture_scr_tap_gallery")
         }
     }
 
@@ -142,7 +145,7 @@ class ImageSearchFragment : Fragment() {
             val imagePath = getAbsolutePathFromUri(imageUri.toUri())
 
             if (navController != null) {
-                val action = ImageSearchFragmentDirections.actionNavImageSearchToNavCropperImageSearch(imagePath)
+                val action = CameraCaptureImageSearchFragmentDirections.actionNavImageSearchToNavCropperImageSearch(imagePath)
                 navController!!.navigate(action)
             } else {
                 isNavControllerAdded()
@@ -177,7 +180,11 @@ class ImageSearchFragment : Fragment() {
         viewBinding.progressBar.visibility = View.VISIBLE
         val fileName = "ImageSearchTemp_${System.currentTimeMillis()}.jpg"
         val outputDirectory = getOutputDirectory()
-        val photoFile = File(outputDirectory, fileName)
+        val tempFile = File(outputDirectory, "/ImageSearchTemp")
+        if (!tempFile.exists()) {
+            tempFile.mkdir()
+        }
+        val photoFile = File(tempFile, fileName)
 
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
         imageCapture.takePicture(
@@ -191,20 +198,11 @@ class ImageSearchFragment : Fragment() {
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     viewBinding.progressBar.visibility = View.GONE
-
-                    // Rotate the image if necessary
                     rotateImageIfRequired(photoFile)
-
-                    // Notify media scanner
-                    MediaScannerConnection.scanFile(
-                        context,
-                        arrayOf(photoFile.absolutePath),
-                        arrayOf("image/png")
-                    ) { path, uri ->
+                    MediaScannerConnection.scanFile(context, arrayOf(photoFile.absolutePath), arrayOf("image/png")) { path, uri ->
                         Log.d("MediaScanner", "File scanned: $path, Uri: $uri")
                     }
 
-                    // Start preview activity with corrected image
                     startPreviewActivity(photoFile.absolutePath)
                 }
             }
@@ -258,12 +256,6 @@ class ImageSearchFragment : Fragment() {
 
     private fun setupSwitchCameraButton() {
         viewBinding.ivRotate.setOnClickListener {
-            CustomFirebaseEvents.logEvent(
-                context = requireActivity(),
-                screenName = "Tab Batch",
-                trigger = "User tap toggle camera back and front",
-                eventName = "tab_batch_scr_toggle_camera"
-            )
             switchCamera()
         }
     }

@@ -164,7 +164,7 @@
     <string name="no_results_found">Geen resultaten gevonden</string>
     <string name="no_result_found_for">Geen resultaat gevonden voor "%1$s"</string>
     <string name="text">Tekst</string>
-    <string name="scanning_documents_please_wait">Documenten scannen, even geduld...</string>
+    <string name="scanning_documents_please_wait">Documenten scannen, even geduld…</string>
     <string name="fill_email_first">Vul eerst de tekst in het veld in</string>
     <string name="document">Document</string>
     <string name="share_as_image">Deel als afbeelding</string>
@@ -227,11 +227,30 @@
     <string name="for_scanning_qr_and_image_translation">Zum Scannen von QR-Codes und Bildübersetzung</string>
     <string name="quick_scan_qr_from_the_notification_center">Schnelles Scannen von QR-Codes aus dem Benachrichtigungscenter</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">Erinnern Sie sich daran, täglich neue großartige Dinge zu entdecken</string>
-    <string name="label_image_search">Image Search</string>
-    <string name="label_select_from_gallery">Select From Gallery</string>
-    <string name="label_take_a_photo">Take A Photo</string>
-    <string name="label_get_from_web">Get From Web</string>
-    <string name="label_ok">Ok</string>
-    <string name="label_searched_image_results">Searched image result</string>
+    <string name="label_image_search">Bildersuche</string>
+    <string name="label_select_from_gallery">Aus Galerie auswählen</string>
+    <string name="label_take_a_photo">Ein Foto machen</string>
+    <string name="label_get_from_web">Aus dem Web holen</string>
+    <string name="label_ok">OK</string>
+    <string name="label_searched_image_results">Suchergebnisse für Bilder</string>
+    <string name="label_no_internet">Kein Internet…!</string>
+    <string name="processing_failed">Verarbeitung fehlgeschlagen</string>
+    <string name="label_copied_google_link">Google-Link kopiert</string>
+    <string name="label_share_google_link">Google-Link teilen</string>
+    <string name="label_error_processing_image">Fehler bei der Bildverarbeitung</string>
+    <string name="label_preparing_your_image">Bild wird vorbereitet…!</string>
+
+    <string-array name="loading_messages">
+        <item>Bild wird vorbereitet…!</item>
+        <item>Einen Moment bitte…!</item>
+        <item>Fast fertig…!</item>
+        <item>Die besten Ergebnisse werden gesucht…!</item>
+        <item>Anfrage wird verarbeitet…!</item>
+        <item>Optimierung für bessere Ergebnisse…!</item>
+        <item>Nur noch ein paar Sekunden…!</item>
+        <item>Suche wird abgeschlossen…!</item>
+        <item>Bitte warten, wir arbeiten daran…!</item>
+    </string-array>
+
 
 </resources>

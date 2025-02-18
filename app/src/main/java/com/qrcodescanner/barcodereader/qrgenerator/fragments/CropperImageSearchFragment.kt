@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,9 +23,16 @@ import androidx.navigation.fragment.navArgs
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.qrcodescanner.barcodereader.qrgenerator.R
+import com.qrcodescanner.barcodereader.qrgenerator.activities.HomeActivity
+import com.qrcodescanner.barcodereader.qrgenerator.ads.CustomFirebaseEvents
 import com.qrcodescanner.barcodereader.qrgenerator.ads.NetworkCheck
 import com.qrcodescanner.barcodereader.qrgenerator.databinding.FragmentCropperImageSearchBinding
 import com.qrcodescanner.barcodereader.qrgenerator.utils.Utils.hideSystemUI
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 
@@ -33,7 +41,8 @@ class CropperImageSearchFragment : Fragment() {
     var navController: NavController? = null
     private lateinit var viewBinding: FragmentCropperImageSearchBinding
     var imagePath = ""
-    var btnBack: ImageView? = null
+    private var btnBack: ImageView? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewBinding = FragmentCropperImageSearchBinding.inflate(inflater, container, false)
         return viewBinding.root
@@ -43,11 +52,16 @@ class CropperImageSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         isNavControllerAdded()
         hideSystemUI(requireActivity())
+        CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_src")
+        val activity = requireActivity() as HomeActivity
+        activity.updateAdLayoutVisibility(shouldShowAd = true)
+        activity.reloadAds()
         val args: CropperImageSearchFragmentArgs by navArgs()
         imagePath = args.imagePath
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (navController != null) {
+                    CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_back")
                     val action = CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavImageSearch()
                     navController!!.navigate(action)
                 } else {
@@ -63,46 +77,62 @@ class CropperImageSearchFragment : Fragment() {
 
         initializeHeader()
 
-        viewBinding.btnCancel.setOnClickListener { requireActivity().onBackPressed() }
+        viewBinding.btnCancel.setOnClickListener {
+            CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_cancel")
+            requireActivity().onBackPressed()
+        }
         viewBinding.btnOK.setOnClickListener {
-            if (NetworkCheck.isNetworkAvailable(requireActivity())) {
+            requireActivity().runOnUiThread {
                 viewBinding.clProgress.visibility = View.VISIBLE
-
                 viewBinding.btnCancel.isEnabled = false
                 viewBinding.btnOK.isEnabled = false
+                btnBack?.isEnabled = false
+            }
 
+            CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_ok")
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                proceedWithImageProcessing()
+            }, 100)
+        }
+    }
+
+    private fun proceedWithImageProcessing() {
+        if (NetworkCheck.isNetworkAvailable(requireActivity())) {
+            CoroutineScope(Dispatchers.IO).launch {
                 val croppedImage = viewBinding.cropImageView.croppedImage
-                imagePath = croppedImage?.let { it1 -> saveBitmapToFile(it1) }!!
-                if (imagePath != "") {
-                    btnBack?.let {
-                        it.isEnabled = false
-                    }
-                    uploadImageToFirebase(imagePath)
-                } else {
-                    if (navController != null) {
-                        val action = CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavImageSearch()
-                        navController!!.navigate(action)
+                imagePath = croppedImage?.let { saveBitmapToFile(it) } ?: ""
+
+                withContext(Dispatchers.Main) {
+                    if (imagePath.isNotEmpty()) {
+                        uploadImageToFirebase(imagePath)
                     } else {
-                        isNavControllerAdded()
+                        navController?.navigate(
+                            CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavImageSearch()
+                        ) ?: isNavControllerAdded()
                     }
                 }
-            } else {
-                viewBinding.clProgress.visibility = View.VISIBLE
-                viewBinding.progress.visibility = View.GONE
-                viewBinding.txProgressText.text = "No Internet...!"
-                Handler().postDelayed({
-                    viewBinding.clProgress.visibility = View.GONE
-                    viewBinding.progress.visibility = View.VISIBLE
-                    viewBinding.txProgressText.text = ""
-                }, 3000)
             }
+        } else {
+            viewBinding.btnCancel.isEnabled = true
+            viewBinding.progress.visibility = View.GONE
+            viewBinding.txProgressText.text = getString(R.string.label_no_internet)
+            Handler(Looper.getMainLooper()).postDelayed({
+                viewBinding.clProgress.visibility = View.GONE
+                viewBinding.progress.visibility = View.VISIBLE
+                viewBinding.txProgressText.text = ""
+            }, 3000)
         }
     }
 
     private fun saveBitmapToFile(bitmap: Bitmap): String {
         val fileName = "ImageSearchTemp_${System.currentTimeMillis()}.jpg"
         val outputDirectory = getOutputDirectory()
-        val photoFile = File(outputDirectory, fileName)
+        val tempFile = File(outputDirectory, "/ImageSearchTemp")
+        if (!tempFile.exists()) {
+            tempFile.mkdir()
+        }
+        val photoFile = File(tempFile, fileName)
         FileOutputStream(photoFile).use { out ->
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
         }
@@ -157,20 +187,10 @@ class CropperImageSearchFragment : Fragment() {
         val file = Uri.fromFile(File(imagePath))
         val imageRef = storageRef.child("${imagePath.toUri().lastPathSegment}")
 
-        val messages = listOf(
-            "Preparing your image...",
-            "Hold on a moment...",
-            "Almost there...",
-            "Fetching the best results for you...",
-            "Processing your request...",
-            "Optimizing for better results...",
-            "Just a few more seconds...",
-            "Finalizing your search...",
-            "Hang tight, we're on it!"
-        )
+        val messages = resources.getStringArray(R.array.loading_messages).toList()
         var messageIndex = 0
 
-        val handler = android.os.Handler()
+        val handler = Handler(Looper.getMainLooper())
         val updateMessageRunnable = object : Runnable {
             override fun run() {
                 if (messageIndex < messages.size) {
@@ -185,26 +205,35 @@ class CropperImageSearchFragment : Fragment() {
         }
         handler.post(updateMessageRunnable)
 
-        val uploadTask = imageRef.putFile(file)
-        uploadTask.addOnSuccessListener {
-            handler.removeCallbacks(updateMessageRunnable)
-            imageRef.downloadUrl.addOnSuccessListener { uri ->
-                val downloadUrl = uri.toString()
-                Log.d("FirebaseUpload", "Download URL: $downloadUrl")
-                requireActivity().getSharedPreferences("DownloadURL", Context.MODE_PRIVATE)
-                    .edit()
-                    .putString("DownloadURL", downloadUrl)
-                    .apply()
-                navController?.navigate(CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavDeepLinkingWebView())
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                imageRef.putFile(file).await()
+                val downloadUrl = imageRef.downloadUrl.await().toString()
+
+                withContext(Dispatchers.Main) {
+                    handler.removeCallbacks(updateMessageRunnable)
+                    Log.d("FirebaseUpload", "Download URL: $downloadUrl")
+
+                    requireActivity().getSharedPreferences("DownloadURL", Context.MODE_PRIVATE)
+                        .edit()
+                        .putString("DownloadURL", downloadUrl)
+                        .apply()
+
+                    navController?.navigate(
+                        CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavDeepLinkingWebView()
+                    )
+                }
+            } catch (exception: Exception) {
+                withContext(Dispatchers.Main) {
+                    handler.removeCallbacks(updateMessageRunnable)
+                    btnBack?.isEnabled = true
+                    viewBinding.btnCancel.isEnabled = true
+                    viewBinding.btnOK.isEnabled = true
+                    viewBinding.txProgressText.text = getString(R.string.processing_failed)
+                    Log.e("FirebaseUpload", "Upload failed: ${exception.message}")
+                    Toast.makeText(requireContext(), "Processing Failed!", Toast.LENGTH_SHORT).show()
+                }
             }
-        }.addOnFailureListener { exception ->
-            handler.removeCallbacks(updateMessageRunnable) // Stop message updates
-            btnBack?.isEnabled = true
-            viewBinding.btnCancel.isEnabled = true
-            viewBinding.btnOK.isEnabled = true
-            viewBinding.txProgressText.text = "Processing Failed"
-            Log.e("FirebaseUpload", "Upload failed: ${exception.message}")
-            Toast.makeText(requireContext(), "Processing Failed!", Toast.LENGTH_SHORT).show()
         }
     }
 }

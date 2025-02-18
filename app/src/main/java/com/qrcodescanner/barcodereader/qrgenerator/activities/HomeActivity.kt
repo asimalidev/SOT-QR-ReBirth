@@ -71,6 +71,7 @@ import com.qrcodescanner.barcodereader.qrgenerator.utils.AdsProvider
 import com.qrcodescanner.barcodereader.qrgenerator.utils.BaseActivity
 import com.qrcodescanner.barcodereader.qrgenerator.utils.banner
 import com.qrcodescanner.barcodereader.qrgenerator.utils.inter_create
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -115,6 +116,7 @@ class HomeActivity : BaseActivity(), HistoryListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        clearTempFiles()
         AppNotificationManager.createNotificationChannels(this)
         isNotificationEnabled = getSavedPermissionState("notificationPermission")
         isDailyAwesomeEnabled = getSavedPermissionState("dailyAwesomePermission")
@@ -129,7 +131,6 @@ class HomeActivity : BaseActivity(), HistoryListener {
 
         scanner = GmsDocumentScanning.getClient(option)
 
-        // Set up the result launcher
         scannerLauncher = registerForActivityResult(
             ActivityResultContracts.StartIntentSenderForResult()
         ) { result -> handleScanResult(result) }
@@ -813,6 +814,22 @@ class HomeActivity : BaseActivity(), HistoryListener {
         }
     }
 
+    private fun clearTempFiles() {
+        val outputDirectory = getOutputDirectory()
+        val tempFile = File(outputDirectory, "/ImageSearchTemp")
+
+        if (tempFile.exists() && tempFile.isDirectory) {
+            tempFile.listFiles()?.forEach { it.delete() }
+        }
+    }
+
+    private fun getOutputDirectory(): File {
+        val mediaDir = externalMediaDirs.firstOrNull()?.let {
+            File(it, resources.getString(R.string.app_name)).apply { mkdirs() }
+        }
+        return if (mediaDir != null && mediaDir.exists())
+            mediaDir else filesDir
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

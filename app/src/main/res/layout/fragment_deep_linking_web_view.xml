@@ -11,76 +11,79 @@
         android:id="@+id/llBrowsers"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
-        android:orientation="horizontal"
         android:background="#0188FE"
-        android:weightSum="3"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <ImageView
-            android:id="@+id/imgGoogle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:padding="@dimen/_4sdp"
-            android:layout_margin="@dimen/_4sdp"
-            android:src="@drawable/ic_google_wv"/>
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imgBing"
+            android:id="@+id/ivGoogle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_margin="@dimen/_4sdp"
             android:layout_weight="1"
             android:padding="@dimen/_4sdp"
-            android:layout_margin="@dimen/_4sdp"
-            android:src="@drawable/ic_bing_wv"/>
+            android:src="@drawable/ic_google_wv" />
 
         <ImageView
-            android:id="@+id/imgYandex"
+            android:id="@+id/ivBing"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_margin="@dimen/_4sdp"
+            android:layout_weight="0"
+            android:visibility="gone"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/ic_bing_wv" />
+
+        <ImageView
+            android:id="@+id/ivYandex"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_4sdp"
             android:layout_weight="1"
             android:padding="@dimen/_4sdp"
-            android:layout_margin="@dimen/_4sdp"
-            android:src="@drawable/ic_yandex_wv"/>
+            android:src="@drawable/ic_yandex_wv" />
     </LinearLayout>
 
     <WebView
         android:id="@+id/webViewGoogle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llBrowsers"/>
+        app:layout_constraintBottom_toTopOf="@+id/llBottomControls"
+        app:layout_constraintTop_toBottomOf="@+id/llBrowsers" />
 
     <WebView
         android:id="@+id/webViewBing"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/llBrowsers"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/llBottomControls"
+        app:layout_constraintTop_toBottomOf="@+id/llBrowsers" />
 
     <WebView
         android:id="@+id/webViewYandex"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/llBrowsers"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/llBottomControls"
+        app:layout_constraintTop_toBottomOf="@+id/llBrowsers" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerLoadingData"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:shimmer_auto_start="true"
-        app:shimmer_base_color="#E1E1E1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llBottomControls"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llBrowsers">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llBrowsers"
+        app:shimmer_auto_start="true"
+        app:shimmer_base_color="#E1E1E1">
 
         <ImageView
             android:layout_width="match_parent"
@@ -90,5 +93,72 @@
             android:src="@drawable/ic_webviewshimmer" />
 
     </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <LinearLayout
+        android:id="@+id/llBottomControls"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="#0188FE"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivHome"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/ivReload"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_retake"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/ivCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_copy"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/ivShare"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_share"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/ivForward"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:rotation="180"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

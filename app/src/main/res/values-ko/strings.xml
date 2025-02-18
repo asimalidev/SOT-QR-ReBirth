@@ -164,7 +164,7 @@
     <string name="no_results_found">결과를 찾을 수 없습니다</string>
     <string name="no_result_found_for">"%1$s"에 대한 결과를 찾을 수 없습니다</string>
     <string name="text">텍스트</string>
-    <string name="scanning_documents_please_wait">문서를 스캔하는 중입니다. 잠시만 기다려 주세요...</string>
+    <string name="scanning_documents_please_wait">문서를 스캔하는 중입니다. 잠시만 기다려 주세요…</string>
     <string name="fill_email_first">필드에 텍스트를 입력해주세요</string>
     <string name="document">문서</string>
     <string name="share_as_image">이미지로 공유</string>
@@ -227,11 +227,29 @@
     <string name="for_scanning_qr_and_image_translation">QR 스캔 및 이미지 번역용</string>
     <string name="quick_scan_qr_from_the_notification_center">알림 센터에서 QR을 빠르게 스캔</string>
     <string name="remind_you_to_daily_discover_new_awesome_things">매일 새로운 멋진 것을 발견하도록 상기시켜줍니다</string>
-    <string name="label_image_search">Image Search</string>
-    <string name="label_select_from_gallery">Select From Gallery</string>
-    <string name="label_take_a_photo">Take A Photo</string>
-    <string name="label_get_from_web">Get From Web</string>
-    <string name="label_ok">Ok</string>
-    <string name="label_searched_image_results">Searched image result</string>
+    <string name="label_image_search">이미지 검색</string>
+    <string name="label_select_from_gallery">갤러리에서 선택</string>
+    <string name="label_take_a_photo">사진 촬영</string>
+    <string name="label_get_from_web">웹에서 가져오기</string>
+    <string name="label_ok">확인</string>
+    <string name="label_searched_image_results">검색된 이미지 결과</string>
+    <string name="label_no_internet">인터넷이 없습니다…!</string>
+    <string name="processing_failed">처리 실패</string>
+    <string name="label_copied_google_link">Google 링크가 복사되었습니다</string>
+    <string name="label_share_google_link">Google 링크 공유</string>
+    <string name="label_error_processing_image">이미지 처리 오류</string>
+    <string name="label_preparing_your_image">이미지를 준비 중입니다…!</string>
+
+    <string-array name="loading_messages">
+        <item>이미지를 준비 중입니다…!</item>
+        <item>잠시만 기다려 주세요…!</item>
+        <item>거의 완료되었습니다…!</item>
+        <item>최고의 결과를 찾고 있습니다…!</item>
+        <item>요청을 처리 중입니다…!</item>
+        <item>더 나은 결과를 위해 최적화 중입니다…!</item>
+        <item>몇 초만 기다려 주세요…!</item>
+        <item>검색을 마무리하는 중입니다…!</item>
+        <item>잠시만 기다려 주세요, 작업 중입니다…!</item>
+    </string-array>
 
 </resources>

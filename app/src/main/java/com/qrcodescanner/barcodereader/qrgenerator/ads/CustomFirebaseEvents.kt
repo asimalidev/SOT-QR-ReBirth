@@ -56,7 +56,7 @@ object CustomFirebaseEvents {
 //        analytics.logEvent(eventName, null)
 //    }*/
 
-    fun logEvent(context: Activity, screenName: String, trigger: String? = null, eventName: String) {
+    fun logEvent(context: Activity, screenName: String = "", trigger: String = "", eventName: String) {
         init(context)
         Log.d("EventTracking", "logEvent: $eventName")
         analytics.logEvent(eventName, null)

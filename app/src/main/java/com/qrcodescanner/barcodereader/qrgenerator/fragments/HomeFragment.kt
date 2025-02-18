@@ -921,6 +921,7 @@ class HomeFragment : Fragment() {
 
     private fun navigateToImageSearch() {
         if (navController != null) {
+            CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "home_scr_tap_searchimg")
             val action = HomeFragmentDirections.actionNavHomeToNavImageSearch()
             navController?.navigate(action)
         } else {
