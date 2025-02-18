@@ -1,14 +1,11 @@
 package com.qrcodescanner.barcodereader.qrgenerator.notification
 
 import android.content.Context
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-
 
 class NotificationWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 

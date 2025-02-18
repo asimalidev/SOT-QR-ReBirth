@@ -41,7 +41,6 @@ import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.view.PreviewView
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -50,6 +49,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import apero.aperosg.monetization.util.showNativeAd
 import com.google.common.util.concurrent.ListenableFuture
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
@@ -78,7 +79,10 @@ import com.qrcodescanner.barcodereader.qrgenerator.utils.native_home
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -134,8 +138,7 @@ class HomeFragment : Fragment() {
             activity?.windowManager?.defaultDisplay?.rotation ?: Surface.ROTATION_0
         ).build()
 
-
-
+        deleteImagesFromFirebase()
 
         // Initialize the scanner
         scanner = GmsDocumentScanning.getClient(option)
@@ -942,6 +945,39 @@ class HomeFragment : Fragment() {
 
     companion object {
         const val REQUEST_CODE_PREVIEW_ACTIVITY = 1002 // Update the code as needed
+    }
+
+
+    private fun deleteImagesFromFirebase() {
+        val sharedPreferences = requireActivity().getSharedPreferences("DownloadURL", Context.MODE_PRIVATE)
+        val urlsJson = sharedPreferences.getString("DownloadableUrls", "[]")
+
+        try {
+            val urlsArray = JSONArray(urlsJson)
+            if (urlsArray.length() == 0) {
+                Log.d("FirebaseDelete", "No images to delete.")
+                return
+            }
+
+            CoroutineScope(Dispatchers.IO).launch {
+                for (i in 0 until urlsArray.length()) {
+                    val fileUrl = urlsArray.getString(i)
+                    val storageRef = Firebase.storage.getReferenceFromUrl(fileUrl)
+
+                    try {
+                        storageRef.delete().await()
+                        Log.d("FirebaseDelete", "Deleted: $fileUrl")
+                    } catch (e: Exception) {
+                        Log.e("FirebaseDelete", "Failed to delete $fileUrl: ${e.message}")
+                    }
+                }
+
+                // Clear the list after deletion
+                sharedPreferences.edit().remove("DownloadableUrls").apply()
+            }
+        } catch (e: JSONException) {
+            Log.e("SharedPreferences", "Error retrieving URL list: ${e.message}")
+        }
     }
 
 }

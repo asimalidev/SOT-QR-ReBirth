@@ -33,6 +33,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONException
 import java.io.File
 import java.io.FileOutputStream
 
@@ -219,6 +221,8 @@ class CropperImageSearchFragment : Fragment() {
                         .putString("DownloadURL", downloadUrl)
                         .apply()
 
+                    saveUrlToSharedPreferences(downloadUrl)
+
                     navController?.navigate(
                         CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavDeepLinkingWebView()
                     )
@@ -234,6 +238,22 @@ class CropperImageSearchFragment : Fragment() {
                     Toast.makeText(requireContext(), "Processing Failed!", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun saveUrlToSharedPreferences(downloadUrl: String) {
+        val sharedPreferences = requireActivity().getSharedPreferences("DownloadURL", Context.MODE_PRIVATE)
+        val urlsJson = sharedPreferences.getString("DownloadableUrls", "[]")
+
+        try {
+            val urlsArray = JSONArray(urlsJson)
+            urlsArray.put(downloadUrl)
+
+            sharedPreferences.edit()
+                .putString("DownloadableUrls", urlsArray.toString())
+                .apply()
+        } catch (e: JSONException) {
+            Log.e("SharedPreferences", "Error saving URL list: ${e.message}")
         }
     }
 }

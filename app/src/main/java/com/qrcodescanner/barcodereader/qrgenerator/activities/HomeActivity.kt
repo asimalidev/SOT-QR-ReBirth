@@ -36,9 +36,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
-import androidx.work.workDataOf
 import apero.aperosg.monetization.util.showBannerAd
 import apero.aperosg.monetization.util.showNativeAd
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -65,17 +62,12 @@ import com.qrcodescanner.barcodereader.qrgenerator.fragments.SettingFragment
 import com.qrcodescanner.barcodereader.qrgenerator.models.FullscreenDialogFragment
 import com.qrcodescanner.barcodereader.qrgenerator.models.Permission
 import com.qrcodescanner.barcodereader.qrgenerator.notification.AppNotificationManager
-import com.qrcodescanner.barcodereader.qrgenerator.notification.NotificationWorker
 import com.qrcodescanner.barcodereader.qrgenerator.stickynotification.StickyNotification
 import com.qrcodescanner.barcodereader.qrgenerator.utils.AdsProvider
 import com.qrcodescanner.barcodereader.qrgenerator.utils.BaseActivity
 import com.qrcodescanner.barcodereader.qrgenerator.utils.banner
 import com.qrcodescanner.barcodereader.qrgenerator.utils.inter_create
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.concurrent.TimeUnit
 
 class HomeActivity : BaseActivity(), HistoryListener {
     companion object {
@@ -631,71 +623,6 @@ class HomeActivity : BaseActivity(), HistoryListener {
             AdsProvider.interCreate.loadAds(MyApplication.getApplication())
         }
     }
-
-
-    fun scheduleSequentialNotifications() {
-        Log.e("notify", "Notification scheduling process started")
-        // Get today's date
-        val sharedPreferences = getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE)
-        val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-
-        // Check if the count exists for today; if not, initialize it to 0
-        var notificationsSentToday = sharedPreferences.getInt(today, 0) // Default to 0 if not found
-
-        val notificationData = listOf(
-            Pair(
-                getString(R.string.create_your_perfect_qr_code_today),
-                getString(R.string.transform_any_url_text_or_data_into_a_unique_qr_code)
-            ),
-            Pair(
-                getString(R.string.scan_save_and_go),
-                getString(R.string.scan_barcodes_and_qr_codes_instantly)
-            ),
-            Pair(
-                getString(R.string.unlock_the_world_with_live_translation),
-                getString(R.string.point_your_camera_at_any_text_to_instantly_translate_it)
-            ),
-            Pair(
-                getString(R.string.your_digital_scanner_is_ready),
-                getString(R.string.snap_scan_and_save_your_documents)
-            )
-        )
-
-        // Schedule notifications sequentially with a 2-minute delay
-        var previousWorkRequest: OneTimeWorkRequest? = null
-        var notificationsScheduled = 0
-
-        notificationData.forEachIndexed { index, data ->
-            // Schedule a notification with a delay
-            val workRequest = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
-                .setInputData(workDataOf("title" to data.first, "content" to data.second))
-                .setInitialDelay(8, TimeUnit.HOURS)
-                .build()
-
-            if (previousWorkRequest != null) {
-                WorkManager.getInstance(this).beginWith(previousWorkRequest!!).then(workRequest)
-                    .enqueue()
-            } else {
-                WorkManager.getInstance(this).enqueue(workRequest)
-            }
-
-            previousWorkRequest = workRequest
-            notificationsScheduled++
-
-            Log.e(
-                "notify",
-                "Notification scheduled: ${data.first}, Index: ${index + 1}, Trigger delay: ${(index + 1) * 2} minutes"
-            )
-        }
-
-        // Update the shared preferences to reflect the correct number of notifications sent
-        sharedPreferences.edit()
-            .putInt(today, notificationsSentToday + notificationsScheduled)
-            .apply()
-
-        Log.e("notify", "Sequential notifications scheduled successfully.")
-    }
-
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
