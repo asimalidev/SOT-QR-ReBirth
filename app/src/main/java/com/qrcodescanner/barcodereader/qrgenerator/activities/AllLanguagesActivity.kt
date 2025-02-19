@@ -41,9 +41,8 @@ class AllLanguagesActivity : AppCompatActivity() {
         adReloadRunnable = Runnable {
             Log.d("AdTimer", "10 seconds passed. Reloading ad...")
             checkNetworkAndLoadAds()
-            startAdReloadTimer()  // Schedule the next reload
+            startAdReloadTimer()
         }
-
 
         if (NetworkCheck.isNetworkAvailable(this@AllLanguagesActivity)) {
             loadShowBannerAd()
@@ -53,11 +52,8 @@ class AllLanguagesActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             onBackPressed()
         }
-        // Initialize RecyclerView
         initRecyclerView()
-        // Set up SearchView listener
         setupSearchView()
-        // Load previously selected language and flag from SharedPreferences
         loadSelectedLanguage()
     }
 
@@ -66,20 +62,19 @@ class AllLanguagesActivity : AppCompatActivity() {
         adReloadHandler.postDelayed(adReloadRunnable, adReloadInterval)
     }
 
-    fun checkNetworkAndLoadAds() {
+    private fun checkNetworkAndLoadAds() {
         val adLayout: FrameLayout = findViewById(R.id.bannerFr)
-        val adLayoutcl: ConstraintLayout = findViewById(R.id.clbanner)
-        if (NetworkCheck.isNetworkAvailable(this) && getSharedPreferences(
-                "RemoteConfig",
-                MODE_PRIVATE
-            ).getBoolean(banner, true)
-        ) {
-            loadShowBannerAd()
-            adLayout.visibility = View.VISIBLE
-        } else {
-            adLayout.visibility = View.GONE // Hide the ad layout if no network
-            adLayoutcl.visibility=View.GONE
-
+        val adLayoutCl: ConstraintLayout? = findViewById(R.id.clbanner)
+        adLayoutCl?.let {
+            if (NetworkCheck.isNetworkAvailable(this) && getSharedPreferences("RemoteConfig", MODE_PRIVATE).getBoolean(banner, true)) {
+                loadShowBannerAd()
+                adLayout.visibility = View.VISIBLE
+            } else {
+                adLayout.visibility = View.GONE
+                adLayoutCl.visibility=View.GONE
+            }
+        } ?: run {
+            return
         }
     }
 
@@ -144,7 +139,7 @@ class AllLanguagesActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        countryAdapter = CountryAdapter(CountryList.getCountryList(), this)
+        countryAdapter = CountryAdapter(CountryList.getCountryListDup(), this)
         binding.recyclerView.adapter = countryAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         // Set the listener for empty results

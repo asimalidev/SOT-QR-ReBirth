@@ -65,8 +65,8 @@ import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 import com.qrcodescanner.barcodereader.qrgenerator.myapplication.MyApplication
 import com.qrcodescanner.barcodereader.qrgenerator.R
 import com.qrcodescanner.barcodereader.qrgenerator.activities.HomeActivity
+import com.qrcodescanner.barcodereader.qrgenerator.activities.HomeActivity.Companion.REQUEST_CODE_CREATE_DOCUMENT
 import com.qrcodescanner.barcodereader.qrgenerator.activities.MainActivity
-import com.qrcodescanner.barcodereader.qrgenerator.activities.MainActivity2.Companion.REQUEST_CODE_CREATE_DOCUMENT
 import com.qrcodescanner.barcodereader.qrgenerator.activities.NewCreateActivity
 import com.qrcodescanner.barcodereader.qrgenerator.databinding.TestLayoutBinding
 import com.qrcodescanner.barcodereader.qrgenerator.activities.PhotoTranslaterActivity
@@ -506,8 +506,12 @@ class HomeFragment : Fragment() {
     private fun navigateToNextFragment(qrCode: String) {
         val currentDestination = navController?.currentDestination
         if (currentDestination?.id == R.id.nav_home) {
-            val action = HomeFragmentDirections.navHomeToNavShowcode(qrCode)
-            navController?.navigate(action)
+            if (navController != null) {
+                val action = HomeFragmentDirections.navHomeToNavShowcode(qrCode)
+                navController?.navigate(action)
+            } else {
+                isNavControllerAdded()
+            }
         } else {
             Log.e(" ", "Cannot navigate: Current destination is ${currentDestination?.id}")
         }
@@ -610,8 +614,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigatetoHistory() {
-        val action = HomeFragmentDirections.actionNavHomeNavHistory()
-        navController?.navigate(action)
+        if (navController != null) {
+            val action = HomeFragmentDirections.actionNavHomeNavHistory()
+            navController?.navigate(action)
+        } else {
+            isNavControllerAdded()
+        }
     }
 
     private fun isHistoryListEmpty(): Boolean {
@@ -890,30 +898,44 @@ class HomeFragment : Fragment() {
         val setting = requireActivity().findViewById<ImageView>(R.id.ivSetting)
         setting?.visibility = View.GONE
         setting?.setOnClickListener {
-            val action = HomeFragmentDirections.actionNavHomeToNavSetting()
-            navController?.navigate(action)
+            if (navController != null) {
+                val action = HomeFragmentDirections.actionNavHomeToNavSetting()
+                navController?.navigate(action)
+            } else {
+                isNavControllerAdded()
+            }
         }
 
         val ivClose = requireActivity().findViewById<ImageView>(R.id.ivPro)
         ivClose?.setImageResource(R.drawable.ic_help)
         ivClose?.visibility = View.GONE
         ivClose?.setOnClickListener {
-
-            val action = HomeFragmentDirections.actionNavHomeToNavHelp()
-            navController?.navigate(action)
-
+            if (navController != null) {
+                val action = HomeFragmentDirections.actionNavHomeToNavHelp()
+                navController?.navigate(action)
+            } else {
+                isNavControllerAdded()
+            }
         }
     }
 
 
     private fun navigateToScanQRCode() {
-        val action = HomeFragmentDirections.actionNavHomeToNavScanQRCode()
-        navController?.navigate(action)
+        if (navController != null) {
+            val action = HomeFragmentDirections.actionNavHomeToNavScanQRCode()
+            navController?.navigate(action)
+        } else {
+            isNavControllerAdded()
+        }
     }
 
     private fun navigateToBatchScan() {
-        val action = HomeFragmentDirections.actionNavHomeNavBatch()
-        navController?.navigate(action)
+        if (navController != null) {
+            val action = HomeFragmentDirections.actionNavHomeNavBatch()
+            navController?.navigate(action)
+        } else {
+            isNavControllerAdded()
+        }
     }
 
     private fun navigateToImageSearch() {
@@ -927,14 +949,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToCreateQrCode() {
-
-        val action = HomeFragmentDirections.actionNavHomeToNavCreate()
-        navController?.navigate(action)
+        if (navController != null) {
+            val action = HomeFragmentDirections.actionNavHomeToNavCreate()
+            navController?.navigate(action)
+        } else {
+            isNavControllerAdded()
+        }
     }
 
     private fun navigateToCreateBarCode() {
-        val action = HomeFragmentDirections.actionNavHomeToNavCreateBarCode()
-        navController?.navigate(action)
+        if (navController != null) {
+            val action = HomeFragmentDirections.actionNavHomeToNavCreateBarCode()
+            navController?.navigate(action)
+        } else {
+            isNavControllerAdded()
+        }
     }
 
     companion object {

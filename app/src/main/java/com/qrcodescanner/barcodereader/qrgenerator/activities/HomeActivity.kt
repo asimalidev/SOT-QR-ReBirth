@@ -50,7 +50,6 @@ import com.google.mlkit.vision.documentscanner.GmsDocumentScanning
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 import com.qrcodescanner.barcodereader.qrgenerator.myapplication.MyApplication
 import com.qrcodescanner.barcodereader.qrgenerator.R
-import com.qrcodescanner.barcodereader.qrgenerator.activities.MainActivity2.Companion.REQUEST_CODE_CREATE_DOCUMENT
 import com.qrcodescanner.barcodereader.qrgenerator.adapters.PermissionAdapter
 import com.qrcodescanner.barcodereader.qrgenerator.ads.CustomFirebaseEvents
 import com.qrcodescanner.barcodereader.qrgenerator.ads.NetworkCheck
@@ -74,6 +73,7 @@ class HomeActivity : BaseActivity(), HistoryListener {
         private const val REQUEST_CAMERA_PERMISSION = 1001
         private const val REQUEST_NOTIFICATION_PERMISSION = 1002
         private const val REQUEST_FULLSCREEN_PERMISSION = 1003
+        const val REQUEST_CODE_CREATE_DOCUMENT = 1001
         var isFullScreenDialogVisible = false
     }
 

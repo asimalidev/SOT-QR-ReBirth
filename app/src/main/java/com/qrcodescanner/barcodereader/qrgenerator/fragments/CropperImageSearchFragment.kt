@@ -63,6 +63,7 @@ class CropperImageSearchFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (navController != null) {
+                    CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_cancel")
                     val action = CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavImageSearch()
                     navController!!.navigate(action)
                 } else {
@@ -79,8 +80,13 @@ class CropperImageSearchFragment : Fragment() {
         initializeHeader()
 
         viewBinding.btnCancel.setOnClickListener {
-            CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_cancel")
-            requireActivity().onBackPressed()
+            if (navController != null) {
+                CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_cancel")
+                val action = CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavImageSearch()
+                navController!!.navigate(action)
+            } else {
+                isNavControllerAdded()
+            }
         }
         viewBinding.btnOK.setOnClickListener {
             requireActivity().runOnUiThread {

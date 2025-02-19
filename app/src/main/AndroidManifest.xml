@@ -57,10 +57,6 @@
         <activity
             android:name=".activities.NewCreateActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.MainActivity2"
-            android:exported="false"
-            android:taskAffinity="" />
 
         <activity
             android:name=".activities.AllLanguagesActivity"

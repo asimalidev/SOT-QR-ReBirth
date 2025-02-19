@@ -25,7 +25,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -49,7 +48,6 @@ import com.qrcodescanner.barcodereader.qrgenerator.ads.CustomFirebaseEvents
 import com.qrcodescanner.barcodereader.qrgenerator.ads.NetworkCheck
 import com.qrcodescanner.barcodereader.qrgenerator.database.QRCodeDatabaseHelper
 import com.qrcodescanner.barcodereader.qrgenerator.utils.AdsProvider
-import com.qrcodescanner.barcodereader.qrgenerator.utils.native_home
 import com.qrcodescanner.barcodereader.qrgenerator.utils.native_result
 import java.io.File
 import java.io.FileOutputStream
@@ -63,7 +61,6 @@ class ShowScanCode : Fragment() {
     private lateinit var binding: FragmentShowScanCodeBinding
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var dbHelper: QRCodeDatabaseHelper
-    private lateinit var layoutAdNative: FrameLayout
     private lateinit var ivQrCode: ImageView
 
     override fun onCreateView(
@@ -89,7 +86,6 @@ class ShowScanCode : Fragment() {
         val args: ShowScanCodeArgs by navArgs()
         val qrCode = args.qrCode
         val isFromHistory = arguments?.getBoolean("isFromHistory", false) ?: false
-        layoutAdNative = requireActivity().findViewById(R.id.layoutAdNative)
         binding.textViewQRCode.text = qrCode
         ivQrCode = view.findViewById(R.id.qrCodeImageView)
         // Initialize database helper
