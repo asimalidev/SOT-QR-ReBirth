@@ -49,7 +49,7 @@ class DeepLinkingWebViewFragment : Fragment() {
         isNavControllerAdded()
         val activity = requireActivity() as HomeActivity
         activity.updateAdLayoutVisibility(shouldShowAd = false)
-        CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "search_img_src")
+        CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "search_img_scr")
         clearTempFiles()
         startShimmerLayout()
         initializeHeader()

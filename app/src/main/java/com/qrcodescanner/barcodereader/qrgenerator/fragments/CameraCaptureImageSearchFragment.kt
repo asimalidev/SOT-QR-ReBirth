@@ -74,7 +74,7 @@ class CameraCaptureImageSearchFragment : Fragment() {
         isNavControllerAdded()
         hideSystemUI(requireActivity())
 
-        CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "cam_capture_src")
+        CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "cam_capture_scr")
 
         val activity = requireActivity() as HomeActivity
         activity.updateAdLayoutVisibility(shouldShowAd = true)

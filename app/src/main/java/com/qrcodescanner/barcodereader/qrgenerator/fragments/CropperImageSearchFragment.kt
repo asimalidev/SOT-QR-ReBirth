@@ -54,7 +54,7 @@ class CropperImageSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         isNavControllerAdded()
         hideSystemUI(requireActivity())
-        CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_src")
+        CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr")
         val activity = requireActivity() as HomeActivity
         activity.updateAdLayoutVisibility(shouldShowAd = true)
         activity.reloadAds()
@@ -63,7 +63,6 @@ class CropperImageSearchFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (navController != null) {
-                    CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_back")
                     val action = CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavImageSearch()
                     navController!!.navigate(action)
                 } else {

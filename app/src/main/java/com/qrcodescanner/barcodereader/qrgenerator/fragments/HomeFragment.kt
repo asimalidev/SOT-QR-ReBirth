@@ -359,12 +359,6 @@ class HomeFragment : Fragment() {
         }
 
         binding.clImageSearch.setOnClickListener {
-            CustomFirebaseEvents.logEvent(
-                context = requireActivity(),
-                screenName = "Home screen",
-                trigger = "Tap on Translate image",
-                eventName = "home_scr_tap_translateimg"
-            )
             val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
             } else {

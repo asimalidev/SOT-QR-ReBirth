@@ -22,8 +22,8 @@ android {
         viewBinding {
             enabled = true
         }
-        versionCode 11
-        versionName "2.0"
+        versionCode 12
+        versionName "2.1"
 
         setProperty("archivesBaseName", "QrCodeScanner" + versionName + " (" + versionCode + ")_" + new Date().format('dd-MM-YYYY'))
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
