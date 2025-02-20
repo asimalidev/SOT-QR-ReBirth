@@ -158,7 +158,7 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PermissionVie
                                 homeActivity.showFullScreenNotification()
                             }
                             if (BuildConfig.DEBUG) {
-                                Toast.makeText(context, "It calls the layout after 1 minute", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "It calls the layout after 1 min", Toast.LENGTH_SHORT).show()
                             }
                         } else {
                             sharedPreferences.edit().putBoolean("dailyAwesomePermission", false).apply()
