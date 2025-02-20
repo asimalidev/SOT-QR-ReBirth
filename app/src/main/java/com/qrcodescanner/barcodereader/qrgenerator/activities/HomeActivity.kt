@@ -64,6 +64,7 @@ import com.qrcodescanner.barcodereader.qrgenerator.notification.AppNotificationM
 import com.qrcodescanner.barcodereader.qrgenerator.stickynotification.StickyNotification
 import com.qrcodescanner.barcodereader.qrgenerator.utils.AdsProvider
 import com.qrcodescanner.barcodereader.qrgenerator.utils.BaseActivity
+import com.qrcodescanner.barcodereader.qrgenerator.utils.PermissionUtils
 import com.qrcodescanner.barcodereader.qrgenerator.utils.banner
 import com.qrcodescanner.barcodereader.qrgenerator.utils.inter_create
 import java.io.File
@@ -133,13 +134,20 @@ class HomeActivity : BaseActivity(), HistoryListener {
         when (action) {
             "scan_qr" -> navController.navigate(R.id.nav_scancode)
             "create_qr" -> navController.navigate(R.id.nav_create)
-            "translate_image" -> startActivity(
-                Intent(
-                    this@HomeActivity,
-                    PhotoTranslaterActivity::class.java
-                )
-            )
+            "translate_image" -> {
+                val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
+                } else {
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                }
 
+                PermissionUtils.checkUserPermission(
+                    activity = this,
+                    permissionsList = permissions.toList(),
+                    onAllGranted = {
+                        startActivity(Intent(this@HomeActivity, PhotoTranslaterActivity::class.java))
+                    })
+            }
             "home" -> navController.navigate(R.id.nav_home)
             "doc_scan" -> startDocumentScanningOrHandleBack()
             "barcode_scan" -> navController.navigate(R.id.action_nav_home_to_nav_CreateBarCode)
@@ -269,7 +277,6 @@ class HomeActivity : BaseActivity(), HistoryListener {
     }
 
     fun showFullScreenNotification() {
-//        startActivity(Intent(this,FullscreenActivity::class.java))
         val fullscreenDialog = FullscreenDialogFragment()
         fullscreenDialog.show(supportFragmentManager, "fullscreenDialog")
     }
@@ -718,19 +725,18 @@ class HomeActivity : BaseActivity(), HistoryListener {
             }
 
             R.id.nav_translate -> {
-                if (ContextCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.CAMERA
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
-                    onBatchClick()
+                val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
                 } else {
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.CAMERA),
-                        permissionBatch
-                    )
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
                 }
+
+                PermissionUtils.checkUserPermission(
+                    activity = this,
+                    permissionsList = permissions.toList(),
+                    onAllGranted = {
+                        onBatchClick()
+                    })
             }
 
             R.id.nav_settings -> {
@@ -986,46 +992,3 @@ interface HistoryListener {
         isScannedEmpty: Boolean
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

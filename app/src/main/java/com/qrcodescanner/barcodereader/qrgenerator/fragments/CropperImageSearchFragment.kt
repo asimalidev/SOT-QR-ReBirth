@@ -63,7 +63,7 @@ class CropperImageSearchFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (navController != null) {
-                    CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_cancel")
+                    CustomFirebaseEvents.logEvent(context = requireActivity(), eventName = "crop_scr_tap_back")
                     val action = CropperImageSearchFragmentDirections.actionNavCropperImageSearchToNavImageSearch()
                     navController!!.navigate(action)
                 } else {

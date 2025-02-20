@@ -30,6 +30,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.FileProvider
 import apero.aperosg.monetization.util.showBannerAd
 import com.google.mlkit.vision.text.Text
+import com.qrcodescanner.barcodereader.qrgenerator.BuildConfig
 import com.qrcodescanner.barcodereader.qrgenerator.myapplication.MyApplication
 import com.qrcodescanner.barcodereader.qrgenerator.utils.BitmapAnnotator
 import com.qrcodescanner.barcodereader.qrgenerator.R
@@ -142,7 +143,9 @@ class PreviewActivity : AppCompatActivity() {
         if (imagePath != null) {
             bitmap = readImageFile(imagePath)!!
             displayBitmap(bitmap)
-            showToast("Image not null")
+            if (BuildConfig.DEBUG) {
+                showToast("Image not null")
+            }
             // Perform OCR in a background thread
             ocrJob = CoroutineScope(Dispatchers.Default).launch {
                 ocrResultMap = ocrHelper.performOcr(bitmap)

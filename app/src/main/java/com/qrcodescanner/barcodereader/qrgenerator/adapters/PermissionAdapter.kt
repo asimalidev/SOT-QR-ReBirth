@@ -23,6 +23,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.qrcodescanner.barcodereader.qrgenerator.BuildConfig
 import com.qrcodescanner.barcodereader.qrgenerator.R
 import com.qrcodescanner.barcodereader.qrgenerator.activities.HomeActivity
 import com.qrcodescanner.barcodereader.qrgenerator.activities.HomeActivity.Companion.isFullScreenDialogVisible
@@ -156,7 +157,9 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PermissionVie
                             if (!isFullScreenDialogVisible) {
                                 homeActivity.showFullScreenNotification()
                             }
-                            Toast.makeText(context, "It calls the layout after 1 minute", Toast.LENGTH_SHORT).show()
+                            if (BuildConfig.DEBUG) {
+                                Toast.makeText(context, "It calls the layout after 1 minute", Toast.LENGTH_SHORT).show()
+                            }
                         } else {
                             sharedPreferences.edit().putBoolean("dailyAwesomePermission", false).apply()
                             permission.isChecked = false

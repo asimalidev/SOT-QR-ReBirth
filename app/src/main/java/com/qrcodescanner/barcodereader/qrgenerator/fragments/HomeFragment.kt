@@ -2,9 +2,7 @@ package com.qrcodescanner.barcodereader.qrgenerator.fragments
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.Activity.RESULT_OK
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -42,10 +40,8 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import apero.aperosg.monetization.util.showNativeAd
 import com.google.common.util.concurrent.ListenableFuture
@@ -91,7 +87,6 @@ class HomeFragment : Fragment() {
     var navController: NavController? = null
     private lateinit var binding: TestLayoutBinding
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
-    private val REQUEST_CAMERA_PERMISSION = 201
     private lateinit var preview: Preview
     private lateinit var camera: Camera
     private lateinit var dbHelper: QRCodeDatabaseHelper
@@ -269,27 +264,30 @@ class HomeFragment : Fragment() {
         }
 
         binding.clScanQR.setOnClickListener {
-            (activity as? HomeActivity)?.checkNetworkAndLoadAds()  // Hide the bottom bar when transition ends
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.CAMERA
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                CustomFirebaseEvents.logEvent(
-                    context = requireActivity(),
-                    screenName = "Home Screen",
-                    trigger = "User tap button Scan QR",
-                    eventName = "home_scr_tap_scanqr"
-                )
-                AdsProvider.interScan.showAds(
-                    activity = requireActivity(),
-                    onNextAction = { adShown ->
-                        navigateToScanQRCode()
-                    }
-                )
+            (activity as? HomeActivity)?.checkNetworkAndLoadAds()
+            val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
             } else {
-                requestCameraPermission()
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
             }
+
+            PermissionUtils.checkUserPermission(
+                activity = requireActivity(),
+                permissionsList = permissions.toList(),
+                onAllGranted = {
+                    CustomFirebaseEvents.logEvent(
+                        context = requireActivity(),
+                        screenName = "Home Screen",
+                        trigger = "User tap button Scan QR",
+                        eventName = "home_scr_tap_scanqr"
+                    )
+                    AdsProvider.interScan.showAds(
+                        activity = requireActivity(),
+                        onNextAction = {
+                            navigateToScanQRCode()
+                        }
+                    )
+                })
         }
 
         binding.clCreateQr.setOnClickListener {
@@ -303,7 +301,7 @@ class HomeFragment : Fragment() {
 
             AdsProvider.interCreate.showAds(
                 activity = requireActivity(),
-                onNextAction = { adShown ->
+                onNextAction = {
                     navigateToCreateQrCode()
                 }
             )
@@ -317,36 +315,60 @@ class HomeFragment : Fragment() {
                 trigger = "Tap on Create Barcode",
                 eventName = "home_scr_tap_createbarcode"
             )
-
             navigateToCreateBarCode()
-
         }
         binding.clTranslateImage.setOnClickListener {
-            CustomFirebaseEvents.logEvent(
-                context = requireActivity(),
-                screenName = "Home screen",
-                trigger = "Tap on Translate image",
-                eventName = "home_scr_tap_translate"
-            )
-            checkAndRequestPermission()
+            val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
+            } else {
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+            }
+
+            PermissionUtils.checkUserPermission(
+                activity = requireActivity(),
+                permissionsList = permissions.toList(),
+                onAllGranted = {
+                    CustomFirebaseEvents.logEvent(
+                        context = requireActivity(),
+                        screenName = "Home screen",
+                        trigger = "Tap on Translate image",
+                        eventName = "home_scr_tap_translate"
+                    )
+                    AdsProvider.interScan.showAds(
+                        activity = requireActivity(),
+                        onNextAction = {
+                            pickImageFromGallery()
+                        }
+                    )
+                })
         }
 
         binding.clBatchScan.setOnClickListener {
-            (activity as? HomeActivity)?.checkNetworkAndLoadAds()
-            CustomFirebaseEvents.logEvent(
-                context = requireActivity(),
-                screenName = "Home screen",
-                trigger = "Tap on Batch Scan",
-                eventName = "home_scr_tap_batchscan"
-            )
-            AdsProvider.interCreate.showAds(
-                activity = requireActivity(),
-                onNextAction = { adShown ->
-                    navigateToBatchScan()
-                }
-            )
-        }
+            val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
+            } else {
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+            }
 
+            PermissionUtils.checkUserPermission(
+                activity = requireActivity(),
+                permissionsList = permissions.toList(),
+                onAllGranted = {
+                    (activity as? HomeActivity)?.checkNetworkAndLoadAds()
+                    CustomFirebaseEvents.logEvent(
+                        context = requireActivity(),
+                        screenName = "Home screen",
+                        trigger = "Tap on Batch Scan",
+                        eventName = "home_scr_tap_batchscan"
+                    )
+                    AdsProvider.interCreate.showAds(
+                        activity = requireActivity(),
+                        onNextAction = {
+                            navigateToBatchScan()
+                        }
+                    )
+                })
+        }
 
         binding.clCreateDocument.setOnClickListener {
             CustomFirebaseEvents.logEvent(
@@ -383,14 +405,12 @@ class HomeFragment : Fragment() {
             )
             AdsProvider.interCreate.showAds(
                 activity = requireActivity(),
-                onNextAction = { adShown ->
+                onNextAction = {
                     navigateToCreateQrCode()
                 }
             )
         }
 
-
-        // Handle back press
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
@@ -425,9 +445,7 @@ class HomeFragment : Fragment() {
 
             try {
                 cameraProvider.unbindAll()
-                camera = cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageAnalysis
-                )
+                camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
                 preview.setSurfaceProvider(binding.cameraPreview.surfaceProvider)
 
                 // Initialize zoom controls after the camera is set up
@@ -493,7 +511,7 @@ class HomeFragment : Fragment() {
                 } else {
                     AdsProvider.interScan.showAds(
                         activity = requireActivity(),
-                        onNextAction = { adShown ->
+                        onNextAction = {
                             navigateToNextFragment(qrCode)
                             isScanInProgress = false
                         }
@@ -517,16 +535,11 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-
-    private suspend fun saveQRCodeToDatabase(qrCode: String, icon: Int) {
+    private fun saveQRCodeToDatabase(qrCode: String, icon: Int) {
         val currentDate = SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(Date())
         val currentTime = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date())
         val result = dbHelper.insertQRCode(qrCode, "Created on $currentDate", currentTime, icon,"","scanned")
-        Log.d(
-            "ScanCodeFragment",
-            "saveQRCodeToDatabase called. QR Code: $qrCode, Date: $currentDate, Time: $currentTime, Insert Result: $result"
-        )
+        Log.d("ScanCodeFragment", "saveQRCodeToDatabase called. QR Code: $qrCode, Date: $currentDate, Time: $currentTime, Insert Result: $result")
     }
 
     private fun vibratePhone() {
@@ -600,11 +613,7 @@ class HomeFragment : Fragment() {
                 isScanning = false // Reset scanning flag after processing the result
             } else {
                 // Handle the case where the scanning result is null
-                Toast.makeText(
-                    requireContext(),
-                    "Failed to get scanning result",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(requireContext(),"Failed to get scanning result",Toast.LENGTH_SHORT).show()
                 isScanning = false
             }
         } else {
@@ -622,12 +631,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun isHistoryListEmpty(): Boolean {
-        val dbHelper = QRCodeDatabaseHelper(requireContext()) // Adjust this as necessary
-        val qrCodeList = dbHelper.getAllQRCodes()
-        return qrCodeList.isEmpty()
-    }
-
     private fun setupFlashButton() {
         binding.ivFlash.setOnClickListener {
             CustomFirebaseEvents.logEvent(
@@ -640,72 +643,23 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted: Boolean ->
-        if (isGranted) {
-            // Permission is granted, proceed with picking the image
-            pickImageFromGallery()
-        } else {
-            // Permission is denied, show a message or explanation
-            Toast.makeText(
-                requireContext(),
-                "Permission is required to access the gallery.",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-
-    private fun checkAndRequestPermission() {
-        when {
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-                    ContextCompat.checkSelfPermission(
-                        requireContext(),
-                        Manifest.permission.READ_MEDIA_IMAGES
-                    ) == PackageManager.PERMISSION_GRANTED -> {
-                pickImageFromGallery()
-            }
-
-            Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU &&
-                    ContextCompat.checkSelfPermission(
-                        requireContext(),
-                        Manifest.permission.READ_EXTERNAL_STORAGE
-                    ) == PackageManager.PERMISSION_GRANTED -> {
-                // Permission is granted
-                pickImageFromGallery()
-            }
-
-            else -> {
-                // Request permission based on the version
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    requestPermissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
-                } else {
-                    requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-                }
-            }
-        }
-    }
-
-
-    // Call this function when the user clicks the button to pick the image
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         pickImageLauncher.launch(intent)
     }
 
-    // Handle the image picking result here
     private val pickImageLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
+            if (result.resultCode == RESULT_OK) {
                 val data: Intent? = result.data
                 val imageUri = data?.data
                 imageUri?.let {
-                    navigateToPhotoTranslaterActivity(it) // Pass the imageUri to the destination
+                    navigateToPhotoTranslatorActivity(it) // Pass the imageUri to the destination
                 }
             }
         }
 
-    private fun navigateToPhotoTranslaterActivity(imageUri: Uri) {
+    private fun navigateToPhotoTranslatorActivity(imageUri: Uri) {
         val intent = Intent(requireActivity(), PhotoTranslaterActivity::class.java).apply {
             putExtra("imageUri", imageUri.toString()) // Pass the image URI
             putExtra("fromHomeActivity", true) // Indicate that the intent is from HomeActivity
@@ -728,93 +682,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun isNavControllerAdded() {
+    private fun isNavControllerAdded() {
         if (isAdded) {
             navController = findNavController()
-        }
-    }
-
-//    private fun startCamera() {
-//        cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-//        cameraProviderFuture.addListener({
-//            val cameraProvider = cameraProviderFuture.get()
-//            val preview = Preview.Builder().build()
-//            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
-//
-//            preview.setSurfaceProvider(previewView.surfaceProvider)
-//
-//            try {
-//                cameraProvider.unbindAll() // Unbind use cases before rebinding
-//                camera = cameraProvider.bindToLifecycle(
-//                    this,
-//                    cameraSelector,
-//                    preview
-//                ) // Bind and initialize camera
-//            } catch (exc: Exception) {
-//                Log.e("CameraX", "Use case binding failed", exc)
-//            }
-//        }, ContextCompat.getMainExecutor(requireContext()))
-//    }
-
-
-    private fun requestCameraPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(
-                requireActivity(),
-                Manifest.permission.CAMERA
-            )
-        ) {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Camera Permission Needed")
-                .setMessage("This app needs the Camera permission to scan QR codes. Please allow this permission.")
-                .setPositiveButton("OK") { _, _ ->
-                    ActivityCompat.requestPermissions(
-                        requireActivity(),
-                        arrayOf(Manifest.permission.CAMERA),
-                        REQUEST_CAMERA_PERMISSION
-                    )
-                }
-                .setNegativeButton("Cancel") { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .create()
-                .show()
-        } else {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(Manifest.permission.CAMERA),
-                REQUEST_CAMERA_PERMISSION
-            )
-        }
-    }
-
-    private fun onCameraPermissionGranted() {
-        val navHostFragment =
-            requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val fragment = navHostFragment.childFragmentManager.fragments[0]
-        if (fragment is ScanCode) {
-            fragment.setupBarcodeScanner()
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            REQUEST_CAMERA_PERMISSION -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    onCameraPermissionGranted()
-                    navigateToScanQRCode()
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Camera permission is required to scan QR codes",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
         }
     }
 
@@ -838,14 +708,9 @@ class HomeFragment : Fragment() {
         dialog.show()
     }
 
-
     override fun onResume() {
         super.onResume()
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.CAMERA
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             setupCamera()
         }
 
@@ -857,7 +722,6 @@ class HomeFragment : Fragment() {
             trigger = "App display Home screen",
             eventName = "home_scr"
         )
-
 
         val isAdEnabled = requireActivity()
             .getSharedPreferences("RemoteConfig", AppCompatActivity.MODE_PRIVATE)
@@ -965,11 +829,6 @@ class HomeFragment : Fragment() {
             isNavControllerAdded()
         }
     }
-
-    companion object {
-        const val REQUEST_CODE_PREVIEW_ACTIVITY = 1002 // Update the code as needed
-    }
-
 
     private fun deleteImagesFromFirebase() {
         val sharedPreferences = requireActivity().getSharedPreferences("DownloadURL", Context.MODE_PRIVATE)
